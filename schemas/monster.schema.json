@@ -1,0 +1,798 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "D&D Monster Schema",
+  "description": "JSON schema for D&D 5e monsters from SRD data",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The monster's name"
+    },
+    "size": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "description": "The creature type (e.g., Aberration, Beast, Construct)"
+    },
+    "category": {
+      "type": "string",
+      "description": "The creature category (e.g., Aboleth, Gold Dragons, Air Elemental)"
+    },
+    "subtype": {
+      "type": "string",
+      "description": "Optional subtype in parentheses (e.g., Demon, Devil)"
+    },
+    "alignment": {
+      "type": "string",
+      "description": "The creature's alignment"
+    },
+    "armorClass": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "initiative": {
+      "type": "object",
+      "properties": {
+        "modifier": {
+          "type": "integer"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "required": ["modifier", "total"]
+    },
+    "hitPoints": {
+      "type": "object",
+      "properties": {
+        "average": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "formula": {
+          "type": "string",
+          "description": "Dice formula (e.g., '20d10 + 40')"
+        }
+      },
+      "required": ["average", "formula"]
+    },
+    "speed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+      },
+      "additionalProperties": false
+    },
+    "abilityScores": {
+      "type": "object",
+      "properties": {
+        "strength": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30
+            },
+            "modifier": {
+              "type": "integer"
+            },
+            "save": {
+              "type": "integer"
+            }
+          },
+          "required": ["score", "modifier", "save"]
+        },
+        "dexterity": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30
+            },
+            "modifier": {
+              "type": "integer"
+            },
+            "save": {
+              "type": "integer"
+            }
+          },
+          "required": ["score", "modifier", "save"]
+        },
+        "constitution": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30
+            },
+            "modifier": {
+              "type": "integer"
+            },
+            "save": {
+              "type": "integer"
+            }
+          },
+          "required": ["score", "modifier", "save"]
+        },
+        "intelligence": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30
+            },
+            "modifier": {
+              "type": "integer"
+            },
+            "save": {
+              "type": "integer"
+            }
+          },
+          "required": ["score", "modifier", "save"]
+        },
+        "wisdom": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30
+            },
+            "modifier": {
+              "type": "integer"
+            },
+            "save": {
+              "type": "integer"
+            }
+          },
+          "required": ["score", "modifier", "save"]
+        },
+        "charisma": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30
+            },
+            "modifier": {
+              "type": "integer"
+            },
+            "save": {
+              "type": "integer"
+            }
+          },
+          "required": ["score", "modifier", "save"]
+        }
+      },
+      "required": ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "damageVulnerabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "damageResistances": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "damageImmunities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conditionImmunities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "senses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "challengeRating": {
+      "type": "object",
+      "properties": {
+        "rating": {
+          "type": "string",
+          "description": "Challenge rating (e.g., '1/4', '2', '10')"
+        },
+        "experiencePoints": {
+          "type": "integer"
+        },
+        "proficiencyBonus": {
+          "type": "integer"
+        }
+      },
+      "required": ["rating", "experiencePoints", "proficiencyBonus"]
+    },
+    "gear": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Equipment carried by the creature"
+    },
+    "traits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "savingThrow": {
+            "type": "object",
+            "properties": {
+              "ability": {
+                "type": "string",
+                "enum": ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+              },
+              "dc": {
+                "type": "integer",
+                "description": "Saving throw DC"
+              }
+            },
+            "required": ["ability", "dc"]
+          },
+          "damage": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "average": {
+                  "type": "integer",
+                  "description": "Average damage"
+                },
+                "formula": {
+                  "type": "string",
+                  "description": "Dice formula (e.g., '2d6 + 5')"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Damage type (e.g., 'Bludgeoning', 'Fire')"
+                }
+              },
+              "required": ["average", "formula", "type"]
+            }
+          },
+          "healing": {
+            "type": "object",
+            "properties": {
+              "average": {
+                "type": "integer",
+                "description": "Average healing"
+              },
+              "formula": {
+                "type": "string",
+                "description": "Dice formula for healing (e.g., '1d10')"
+              }
+            },
+            "required": ["average", "formula"]
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Condition name (e.g., 'Grappled', 'Poisoned')"
+                },
+                "dc": {
+                  "type": "integer",
+                  "description": "DC to escape/resist condition"
+                }
+              },
+              "required": ["name"]
+            }
+          }
+        },
+        "required": ["name", "description"]
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["melee", "ranged", "special", "multiattack"]
+          },
+          "attackRoll": {
+            "type": "object",
+            "properties": {
+              "bonus": {
+                "type": "integer",
+                "description": "Attack roll bonus (e.g., +9)"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["melee", "ranged"]
+              }
+            },
+            "required": ["bonus", "type"]
+          },
+          "savingThrow": {
+            "type": "object",
+            "properties": {
+              "ability": {
+                "type": "string",
+                "enum": ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+              },
+              "dc": {
+                "type": "integer",
+                "description": "Saving throw DC"
+              }
+            },
+            "required": ["ability", "dc"]
+          },
+          "damage": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "average": {
+                  "type": "integer",
+                  "description": "Average damage"
+                },
+                "formula": {
+                  "type": "string",
+                  "description": "Dice formula (e.g., '2d6 + 5')"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Damage type (e.g., 'Bludgeoning', 'Fire')"
+                }
+              },
+              "required": ["average", "formula", "type"]
+            }
+          },
+          "healing": {
+            "type": "object",
+            "properties": {
+              "average": {
+                "type": "integer",
+                "description": "Average healing"
+              },
+              "formula": {
+                "type": "string",
+                "description": "Dice formula for healing (e.g., '1d10')"
+              }
+            },
+            "required": ["average", "formula"]
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Condition name (e.g., 'Grappled', 'Poisoned')"
+                },
+                "dc": {
+                  "type": "integer",
+                  "description": "DC to escape/resist condition"
+                }
+              },
+              "required": ["name"]
+            }
+          },
+          "recharge": {
+            "type": "string",
+            "description": "Recharge requirement (e.g., '4-6', '5-6')"
+          },
+          "usesPerDay": {
+            "type": "integer",
+            "description": "Number of uses per day"
+          },
+          "spells": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "level": {
+                  "type": "string"
+                },
+                "spells": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": ["level", "spells"]
+            }
+          },
+          "spellcasting": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "Spellcasting description (e.g., spell save DC, ability used)"
+              },
+              "atWill": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Spells that can be cast at will"
+              },
+              "perDay": {
+                "type": "object",
+                "properties": {
+                  "uses": {
+                    "type": "integer",
+                    "description": "Number of uses per day"
+                  },
+                  "spells": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Spells with limited daily uses"
+                  }
+                },
+                "required": ["spells"]
+              }
+            },
+            "required": ["description"]
+          }
+        },
+        "required": ["name", "description"]
+      }
+    },
+    "bonusActions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["melee", "ranged", "special", "multiattack"]
+          },
+          "attackRoll": {
+            "type": "object",
+            "properties": {
+              "bonus": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["melee", "ranged"]
+              }
+            },
+            "required": ["bonus", "type"]
+          },
+          "savingThrow": {
+            "type": "object",
+            "properties": {
+              "ability": {
+                "type": "string",
+                "enum": ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+              },
+              "dc": {
+                "type": "integer"
+              }
+            },
+            "required": ["ability", "dc"]
+          },
+          "damage": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "average": {
+                  "type": "integer"
+                },
+                "formula": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              },
+              "required": ["average", "formula", "type"]
+            }
+          },
+          "healing": {
+            "type": "object",
+            "properties": {
+              "average": {
+                "type": "integer"
+              },
+              "formula": {
+                "type": "string"
+              }
+            },
+            "required": ["average", "formula"]
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "dc": {
+                  "type": "integer"
+                }
+              },
+              "required": ["name"]
+            }
+          },
+          "recharge": {
+            "type": "string"
+          },
+          "usesPerDay": {
+            "type": "integer"
+          }
+        },
+        "required": ["name", "description"]
+      }
+    },
+    "reactions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["melee", "ranged", "special", "multiattack"]
+          },
+          "attackRoll": {
+            "type": "object",
+            "properties": {
+              "bonus": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["melee", "ranged"]
+              }
+            },
+            "required": ["bonus", "type"]
+          },
+          "savingThrow": {
+            "type": "object",
+            "properties": {
+              "ability": {
+                "type": "string",
+                "enum": ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+              },
+              "dc": {
+                "type": "integer"
+              }
+            },
+            "required": ["ability", "dc"]
+          },
+          "damage": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "average": {
+                  "type": "integer"
+                },
+                "formula": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              },
+              "required": ["average", "formula", "type"]
+            }
+          },
+          "healing": {
+            "type": "object",
+            "properties": {
+              "average": {
+                "type": "integer"
+              },
+              "formula": {
+                "type": "string"
+              }
+            },
+            "required": ["average", "formula"]
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "dc": {
+                  "type": "integer"
+                }
+              },
+              "required": ["name"]
+            }
+          },
+          "trigger": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "description"]
+      }
+    },
+    "legendaryActions": {
+      "type": "object",
+      "properties": {
+        "uses": {
+          "type": "integer",
+          "description": "Number of legendary action uses"
+        },
+        "usesInLair": {
+          "type": "integer",
+          "description": "Number of legendary action uses in lair"
+        },
+        "usageDescription": {
+          "type": "string",
+          "description": "Description of how legendary actions work"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["melee", "ranged", "special", "multiattack"]
+              },
+              "attackRoll": {
+                "type": "object",
+                "properties": {
+                  "bonus": {
+                    "type": "integer"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": ["melee", "ranged"]
+                  }
+                },
+                "required": ["bonus", "type"]
+              },
+              "savingThrow": {
+                "type": "object",
+                "properties": {
+                  "ability": {
+                    "type": "string",
+                    "enum": ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+                  },
+                  "dc": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["ability", "dc"]
+              },
+              "damage": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "average": {
+                      "type": "integer"
+                    },
+                    "formula": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["average", "formula", "type"]
+                }
+              },
+              "healing": {
+                "type": "object",
+                "properties": {
+                  "average": {
+                    "type": "integer"
+                  },
+                  "formula": {
+                    "type": "string"
+                  }
+                },
+                "required": ["average", "formula"]
+              },
+              "conditions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "dc": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": ["name"]
+                }
+              },
+              "cost": {
+                "type": "integer",
+                "default": 1,
+                "description": "Legendary action cost"
+              }
+            },
+            "required": ["name", "description"]
+          }
+        }
+      },
+      "required": ["usageDescription", "actions"]
+    }
+  },
+  "required": [
+    "name",
+    "size",
+    "type",
+    "category",
+    "alignment",
+    "armorClass",
+    "hitPoints",
+    "speed",
+    "abilityScores",
+    "senses",
+    "challengeRating"
+  ],
+  "additionalProperties": false
+}
