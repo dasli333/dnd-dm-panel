@@ -284,6 +284,10 @@
         "type": "string"
       },
       "description": "Additional tags for categorization (e.g., 'combat', 'utility', 'social')"
+    },
+    "summonedCreature": {
+      "type": "string",
+      "description": "Name of creature that can be summoned by this spell"
     }
   },
   "required": [

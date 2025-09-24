@@ -155,6 +155,27 @@ function parseSpellDetails(detailsLine) {
   return result;
 }
 
+// Helper function to parse summoned creature and clean description
+function parseSummonedCreature(text) {
+  // Match patterns like "$$$Creature Name"
+  const creaturePattern = /\$\$\$([^$\n\r]+)/;
+  const match = text.match(creaturePattern);
+
+  let summonedCreature = null;
+  let cleanedText = text;
+
+  if (match) {
+    summonedCreature = match[1].trim();
+    // Remove all $$$ markers from the text
+    cleanedText = text.replace(/\$\$\$[^$\n\r]+/g, '').replace(/\s+/g, ' ').trim();
+  }
+
+  return {
+    summonedCreature,
+    cleanedDescription: cleanedText
+  };
+}
+
 // Helper function to determine attack type and saving throw
 function determineAttackInfo(description) {
   const result = {
@@ -188,24 +209,31 @@ function finalizeSpell(currentSpell, descriptionLines) {
   }
 
   const fullDescription = descriptionLines.join(" ").trim();
-  currentSpell.description = fullDescription;
+
+  // Parse summoned creature and clean description
+  const { summonedCreature, cleanedDescription } = parseSummonedCreature(fullDescription);
+  currentSpell.description = cleanedDescription;
+
+  if (summonedCreature) {
+    currentSpell.summonedCreature = summonedCreature;
+  }
 
   // Extract higher levels info
-  const higherLevelsMatch = fullDescription.match(/Using a Higher-Level Spell Slot\.(.*?)(?:\.|$)/s);
+  const higherLevelsMatch = currentSpell.description.match(/Using a Higher-Level Spell Slot\.(.*?)(?:\.|$)/s);
   if (higherLevelsMatch) {
     currentSpell.higherLevels = higherLevelsMatch[1].trim();
     currentSpell.description = currentSpell.description.replace(/Using a Higher-Level Spell Slot\..*/, "").trim();
   }
 
   // Extract cantrip upgrade info
-  const cantripMatch = fullDescription.match(/Cantrip Upgrade\.(.*?)(?:\.|$)/s);
+  const cantripMatch = currentSpell.description.match(/Cantrip Upgrade\.(.*?)(?:\.|$)/s);
   if (cantripMatch) {
     currentSpell.cantripUpgrade = cantripMatch[1].trim();
     currentSpell.description = currentSpell.description.replace(/Cantrip Upgrade\..*/, "").trim();
   }
 
-  // Parse damage
-  const damages = parseDamageFormula(fullDescription);
+  // Parse damage (use cleaned description)
+  const damages = parseDamageFormula(currentSpell.description);
   if (damages.length > 0) {
     currentSpell.damage = damages;
   }
@@ -359,6 +387,7 @@ function extractSpells() {
     // Show some statistics
     const cantrips = spells.filter((s) => s.isCantrip).length;
     const leveledSpells = spells.length - cantrips;
+    const spellsWithSummons = spells.filter((s) => s.summonedCreature).length;
     const schoolCounts = {};
 
     spells.forEach((spell) => {
@@ -370,6 +399,7 @@ function extractSpells() {
     console.log(`\nStatistics:`);
     console.log(`- Cantrips: ${cantrips}`);
     console.log(`- Leveled spells: ${leveledSpells}`);
+    console.log(`- Spells with summoned creatures: ${spellsWithSummons}`);
     console.log(`- Schools:`);
     Object.entries(schoolCounts)
       .sort()

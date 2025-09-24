@@ -3761,3 +3761,46 @@ Int 3 −4 −4 WIS 12 +1 +1 Cha 6 −2 −2
 Skills Perception +5, Stealth +4 Senses Darkvision 60 ft.; Passive Perception 15 Languages None CR 1/4 (XP 50; PB +2)
 Traits Pack Tactics. The wolf has Advantage on attack rolls against a creature if at least one of the wolf’s allies is within 5 feet of the creature and the ally doesn’t have the Incapacitated condition.
 Actions Bite. Melee Attack Roll: +4, reach 5 ft. Hit: 5 (1d6 + 2) Piercing damage. If the target is a Medium or smaller creature, it has the Prone condition.
+!Summoner!
+###Animated Object Huge or Smaller Construct, Unaligned
+AC 15 HP 10 (Medium or smaller), 20 (Large), 40 (Huge) Speed 30 ft.
+MOD SAVE MOD SAVE MOD SAVE
+Str 16 +3 +3 Dex 10 +0 +0 Con 10 +0 +0
+Int 3 −4 −4 WIS 3 −4 −4 Cha 1 −5 −5
+Immunities Poison, Psychic; Charmed, Exhaustion, Frightened, Paralyzed, Poisoned
+Senses Blindsight 30 ft.; Passive Perception 6 Languages Understands the languages you know CR None (XP 0; PB equals your Proficiency Bonus)
+Actions Slam. Melee Attack Roll: Bonus equals your spell attack modifier, reach 5 ft. Hit: Force damage equal to 1d4 + 3 (Medium or smaller), 2d6 + 3 + your spellcasting ability modifier (Large), or 2d12 + 3 + your spellcasting ability modifier (Huge).
+###Otherworldly Steed Large Celestial, Fey, or Fiend (Your Choice), Neutral
+AC 10 + 1 per spell level HP 5 + 10 per spell level (the steed has a number of Hit
+Dice [d10s] equal to the spell’s level) Speed 60 ft., Fly 60 ft. (requires level 4+ spell)
+MOD SAVE MOD SAVE MOD SAVE
+Str 18 +4 +4 Dex 12 +1 +1 Con 14 +2 +2
+Int 6 −2 −2 WIS 12 +1 +1 Cha 8 −1 −1
+Senses Passive Perception 11 Languages Telepathy 1 mile (works only with you) CR None (XP 0; PB equals your Proficiency Bonus)
+Traits Life Bond. When you regain Hit Points from a level 1+ spell, the steed regains the same number of Hit Points if you’re within 5 feet of it.
+Actions Otherworldly Slam. Melee Attack Roll: Bonus equals your spell attack modifier, reach 5 ft. Hit: 1d8 plus the spell’s level of Radiant (Celestial), Psychic (Fey), or Ne-crotic (Fiend) damage.
+Bonus Actions Fell Glare (Fiend Only; Recharges after a Long Rest). Wisdom Saving Throw: DC equals your spell save DC, one creature within 60 feet the steed can see. Failure: The target has the Frightened condition until the end of your next turn.
+Fey Step (Fey Only; Recharges after a Long Rest). The steed teleports, along with its rider, to an unoccupied space of your choice up to 60 feet away from itself.
+Healing Touch (Celestial Only; Recharges after a Long Rest). One creature within 5 feet of the steed regains a number of Hit Points equal to 2d8 plus the spell’s level.
+###Giant Insect Large Beast, Unaligned
+AC 11 + the spell’s level HP 30 + 10 for each spell level above 4 Speed 40 ft., Climb 40 ft., Fly 40 ft. (Wasp only)
+MOD SAVE MOD SAVE MOD SAVE
+Str 17 +3 +3 Dex 13 +1 +1 Con 15 +2 +2
+Int 4 −3 −3 WIS 14 +2 +2 Cha 3 −4 −4
+Senses Darkvision 60 ft.; Passive Perception 12 Languages Understands the languages you know CR None (XP 0; PB equals your Proficiency Bonus)
+Traits Spider Climb. The insect can climb difficult surfaces, including along ceilings, without needing to make an ability check.
+Actions Multiattack. The insect makes a number of attacks equal to half this spell’s level (round down).
+Poison Jab. Melee Attack Roll: Bonus equals your spell attack modifier, reach 10 ft. Hit: 1d6 + 3 plus the spell’s level Piercing damage plus 1d4 Poison damage.
+Web Bolt (Spider Only). Ranged Attack Roll: Bonus equals your spell attack modifier, range 60 ft. Hit: 1d10 + 3 plus the spell’s level Bludgeoning damage, and the target’s Speed is reduced to 0 until the start of the in-sect’s next turn.
+Bonus Actions Venomous Spew (Centipede Only). Constitution Saving Throw: Your spell save DC, one creature the insect can see within 10 feet. Failure: The target has the Poisoned condition until the start of the insect’s next turn.
+###Draconic Spirit Large Dragon, Neutral
+AC 14 + the spell’s level HP 50 + 10 for each spell level above 5 Speed 30 ft., Fly 60 ft., Swim 30 ft.
+MOD SAVE MOD SAVE MOD SAVE
+Str 19 +4 +4 Dex 14 +2 +2 Con 17 +3 +3
+Int 10 +0 +0 WIS 14 +2 +2 Cha 14 +2 +2
+Resistances Acid, Cold, Fire, Lightning, Poison Immunities Charmed, Frightened, Poisoned Senses Blindsight 30 ft., Darkvision 60 ft.;
+Passive Perception 12 Languages Draconic, understands the languages you know CR None (XP 0; PB equals your Proficiency Bonus)
+Traits Shared Resistances. When you summon the spirit, choose one of its Resistances. You have Resistance to the chosen damage type until the spell ends.
+Actions Multiattack. The spirit makes a number of Rend attacks equal to half the spell’s level (round down), and it uses Breath Weapon.
+Rend. Melee Attack Roll: Bonus equals your spell attack modifier, reach 10 feet. Hit: 1d6 + 4 + the spell’s level Piercing damage.
+Breath Weapon. Dexterity Saving Throw: DC equals your spell save DC, each creature in a 30-foot Cone. Failure: 2d6 damage of a type this spirit has Resistance to (your choice when you cast the spell). Success: Half damage.
