@@ -47,7 +47,7 @@
       "additionalProperties": false
     },
     "range": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "The spell's range (e.g., 'Touch', '30 feet', 'Self', '1 mile')"
     },
     "components": {
@@ -66,7 +66,7 @@
           "description": "Requires material component (M)"
         },
         "materialDescription": {
-          "type": "string",
+          "type": ["string", "null"],
           "description": "Description of material components if required"
         }
       },
@@ -90,7 +90,7 @@
           "description": "Whether concentration is required"
         }
       },
-      "required": ["durationType"],
+      "required": ["durationType", "concentration"],
       "additionalProperties": false
     },
     "description": {
@@ -131,19 +131,9 @@
       "items": {
         "type": "object",
         "properties": {
-          "diceCount": {
-            "type": "integer",
-            "minimum": 1,
-            "description": "Number of dice"
-          },
-          "diceSize": {
-            "type": "integer",
-            "enum": [4, 6, 8, 10, 12, 20],
-            "description": "Size of each die"
-          },
-          "bonus": {
-            "type": "integer",
-            "description": "Fixed bonus to add to damage"
+          "formula": {
+            "type": "string",
+            "description": "Complete damage formula (e.g., '4d4', '2d6 + 5')"
           },
           "damageType": {
             "type": "string",
@@ -154,31 +144,12 @@
             ],
             "description": "Type of damage dealt"
           },
-          "formula": {
-            "type": "string",
-            "description": "Complete damage formula (e.g., '4d4', '2d6 + 5')"
-          },
           "average": {
             "type": "number",
             "description": "Average damage value"
-          },
-          "scaling": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["spell_level", "character_level"],
-                "description": "How damage scales"
-              },
-              "increment": {
-                "type": "string",
-                "description": "How much damage increases (e.g., '1d4 per slot level', '1d6 at 5th level')"
-              }
-            },
-            "required": ["type", "increment"]
           }
         },
-        "required": ["damageType", "formula"]
+        "required": ["formula", "damageType", "average"]
       }
     },
     "healing": {

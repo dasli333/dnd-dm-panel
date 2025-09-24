@@ -183,23 +183,65 @@ function determineAttackInfo(description) {
     savingThrow: null,
   };
 
-  if (description.includes("spell attack")) {
+  // Clean up hyphenated words that were split across lines
+  const cleanedDescription = description.replace(/(\w+)-\s*(\w+)/g, '$1$2');
+
+  if (cleanedDescription.includes("spell attack")) {
     result.attackType = "spell_attack";
-  } else if (description.includes("saving throw")) {
+  } else if (cleanedDescription.includes("saving throw")) {
     result.attackType = "saving_throw";
 
-    // Try to extract saving throw ability
-    const saveMatch = description.match(/(\w+)\s+saving\s+throw/i);
-    if (saveMatch) {
-      const ability = saveMatch[1];
+    // Try to extract saving throw ability - look for full ability names first
+    const fullAbilityMatch = cleanedDescription.match(/(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s+saving\s+throw/i);
+    if (fullAbilityMatch) {
+      const ability = fullAbilityMatch[1];
       result.savingThrow = {
         ability: ability.charAt(0).toUpperCase() + ability.slice(1).toLowerCase(),
         success: "negates", // Default, could be improved with more parsing
       };
+    } else {
+      // Fallback to word before "saving throw" but try to reconstruct common fragments
+      const saveMatch = cleanedDescription.match(/(\w+)\s+saving\s+throw/i);
+      if (saveMatch) {
+        let ability = saveMatch[1];
+
+        // Fix common fragments from hyphenation
+        const fragmentMap = {
+          'ity': 'Dexterity',
+          'dom': 'Wisdom',
+          'ength': 'Strength',
+          'ution': 'Constitution',
+          'gence': 'Intelligence',
+          'risma': 'Charisma',
+          'a': 'Charisma', // Sometimes just 'a' from 'Charism-a'
+        };
+
+        if (fragmentMap[ability.toLowerCase()]) {
+          ability = fragmentMap[ability.toLowerCase()];
+        }
+
+        result.savingThrow = {
+          ability: ability.charAt(0).toUpperCase() + ability.slice(1).toLowerCase(),
+          success: "negates", // Default, could be improved with more parsing
+        };
+      }
     }
   }
 
   return result;
+}
+
+// Helper function to clean up hyphenated words split across lines
+function cleanHyphenatedText(text) {
+  // Fix common hyphenated words that got split across lines
+  return text
+    .replace(/Dexter-\s*ity/gi, 'Dexterity')
+    .replace(/Wis-\s*dom/gi, 'Wisdom')
+    .replace(/Str-\s*ength/gi, 'Strength')
+    .replace(/Consti-\s*tution/gi, 'Constitution')
+    .replace(/Intel-\s*ligence/gi, 'Intelligence')
+    .replace(/Charis-\s*ma/gi, 'Charisma')
+    .replace(/(\w+)-\s+(\w+)/g, '$1$2'); // General pattern for any hyphenated word
 }
 
 // Helper function to finalize spell
@@ -208,7 +250,8 @@ function finalizeSpell(currentSpell, descriptionLines) {
     return null;
   }
 
-  const fullDescription = descriptionLines.join(" ").trim();
+  let fullDescription = descriptionLines.join(" ").trim();
+  fullDescription = cleanHyphenatedText(fullDescription);
 
   // Parse summoned creature and clean description
   const { summonedCreature, cleanedDescription } = parseSummonedCreature(fullDescription);
