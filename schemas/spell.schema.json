@@ -1,0 +1,302 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "D&D Spell Schema",
+  "description": "JSON schema for D&D 5e spells from SRD data",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The spell's name"
+    },
+    "level": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9,
+      "description": "Spell level (0 for cantrips, 1-9 for leveled spells)"
+    },
+    "school": {
+      "type": "string",
+      "enum": ["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"],
+      "description": "The school of magic"
+    },
+    "isCantrip": {
+      "type": "boolean",
+      "description": "Whether this is a cantrip (level 0 spell)"
+    },
+    "classes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["Artificer", "Bard", "Cleric", "Druid", "Paladin", "Ranger", "Sorcerer", "Warlock", "Wizard"]
+      },
+      "description": "Classes that can cast this spell"
+    },
+    "castingTime": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "description": "Base casting time (e.g., 'Action', '1 minute', '1 hour')"
+        },
+        "isRitual": {
+          "type": "boolean",
+          "description": "Whether the spell can be cast as a ritual"
+        }
+      },
+      "required": ["time"],
+      "additionalProperties": false
+    },
+    "range": {
+      "type": "string",
+      "description": "The spell's range (e.g., 'Touch', '30 feet', 'Self', '1 mile')"
+    },
+    "components": {
+      "type": "object",
+      "properties": {
+        "verbal": {
+          "type": "boolean",
+          "description": "Requires verbal component (V)"
+        },
+        "somatic": {
+          "type": "boolean",
+          "description": "Requires somatic component (S)"
+        },
+        "material": {
+          "type": "boolean",
+          "description": "Requires material component (M)"
+        },
+        "materialDescription": {
+          "type": "string",
+          "description": "Description of material components if required"
+        }
+      },
+      "required": ["verbal", "somatic", "material"],
+      "additionalProperties": false
+    },
+    "duration": {
+      "type": "object",
+      "properties": {
+        "durationType": {
+          "type": "string",
+          "enum": ["Instantaneous", "Concentration", "Until Dispelled", "Special", "Timed"],
+          "description": "Type of duration"
+        },
+        "duration": {
+          "type": "string",
+          "description": "Duration description (e.g., '1 hour', '24 hours', 'up to 1 minute')"
+        },
+        "concentration": {
+          "type": "boolean",
+          "description": "Whether concentration is required"
+        }
+      },
+      "required": ["durationType"],
+      "additionalProperties": false
+    },
+    "description": {
+      "type": "string",
+      "description": "Main spell description"
+    },
+    "higherLevels": {
+      "type": "string",
+      "description": "Description of effects when cast using higher-level spell slots"
+    },
+    "cantripUpgrade": {
+      "type": "string",
+      "description": "Description of cantrip scaling at higher character levels"
+    },
+    "attackType": {
+      "type": "string",
+      "enum": ["spell_attack", "saving_throw", "none"],
+      "description": "How the spell targets enemies"
+    },
+    "savingThrow": {
+      "type": "object",
+      "properties": {
+        "ability": {
+          "type": "string",
+          "enum": ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+        },
+        "success": {
+          "type": "string",
+          "enum": ["negates", "half_damage", "reduced_effect", "special"],
+          "description": "Effect of successful saving throw"
+        }
+      },
+      "required": ["ability", "success"],
+      "additionalProperties": false
+    },
+    "damage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "diceCount": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Number of dice"
+          },
+          "diceSize": {
+            "type": "integer",
+            "enum": [4, 6, 8, 10, 12, 20],
+            "description": "Size of each die"
+          },
+          "bonus": {
+            "type": "integer",
+            "description": "Fixed bonus to add to damage"
+          },
+          "damageType": {
+            "type": "string",
+            "enum": [
+              "Acid", "Bludgeoning", "Cold", "Fire", "Force", "Lightning",
+              "Necrotic", "Piercing", "Poison", "Psychic", "Radiant",
+              "Slashing", "Thunder"
+            ],
+            "description": "Type of damage dealt"
+          },
+          "formula": {
+            "type": "string",
+            "description": "Complete damage formula (e.g., '4d4', '2d6 + 5')"
+          },
+          "average": {
+            "type": "number",
+            "description": "Average damage value"
+          },
+          "scaling": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["spell_level", "character_level"],
+                "description": "How damage scales"
+              },
+              "increment": {
+                "type": "string",
+                "description": "How much damage increases (e.g., '1d4 per slot level', '1d6 at 5th level')"
+              }
+            },
+            "required": ["type", "increment"]
+          }
+        },
+        "required": ["damageType", "formula"]
+      }
+    },
+    "healing": {
+      "type": "object",
+      "properties": {
+        "diceCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "diceSize": {
+          "type": "integer",
+          "enum": [4, 6, 8, 10, 12, 20]
+        },
+        "bonus": {
+          "type": "integer"
+        },
+        "formula": {
+          "type": "string",
+          "description": "Complete healing formula"
+        },
+        "average": {
+          "type": "number",
+          "description": "Average healing value"
+        },
+        "scaling": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["spell_level", "character_level"]
+            },
+            "increment": {
+              "type": "string"
+            }
+          },
+          "required": ["type", "increment"]
+        }
+      },
+      "required": ["formula"]
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "Blinded", "Charmed", "Deafened", "Frightened", "Grappled",
+              "Incapacitated", "Invisible", "Paralyzed", "Petrified",
+              "Poisoned", "Prone", "Restrained", "Stunned", "Unconscious"
+            ],
+            "description": "Condition inflicted by the spell"
+          },
+          "duration": {
+            "type": "string",
+            "description": "How long the condition lasts"
+          },
+          "savingThrow": {
+            "type": "object",
+            "properties": {
+              "ability": {
+                "type": "string",
+                "enum": ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+              },
+              "frequency": {
+                "type": "string",
+                "description": "When saves can be made (e.g., 'end of each turn')"
+              }
+            },
+            "required": ["ability"]
+          }
+        },
+        "required": ["name"]
+      }
+    },
+    "areaOfEffect": {
+      "type": "object",
+      "properties": {
+        "shape": {
+          "type": "string",
+          "enum": ["Sphere", "Cube", "Cylinder", "Cone", "Line", "Square", "Circle"],
+          "description": "Shape of the area of effect"
+        },
+        "size": {
+          "type": "string",
+          "description": "Size description (e.g., '20-foot radius', '15-foot cube')"
+        }
+      },
+      "required": ["shape", "size"]
+    },
+    "targets": {
+      "type": "string",
+      "description": "Valid targets for the spell (e.g., 'One creature', 'Up to 3 creatures', 'Self')"
+    },
+    "ritual": {
+      "type": "boolean",
+      "description": "Whether this spell can be cast as a ritual"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Additional tags for categorization (e.g., 'combat', 'utility', 'social')"
+    }
+  },
+  "required": [
+    "name",
+    "level",
+    "school",
+    "isCantrip",
+    "classes",
+    "castingTime",
+    "range",
+    "components",
+    "duration",
+    "description"
+  ],
+  "additionalProperties": false
+}
