@@ -167,12 +167,15 @@ function parseSummonedCreature(text) {
   if (match) {
     summonedCreature = match[1].trim();
     // Remove all $$$ markers from the text
-    cleanedText = text.replace(/\$\$\$[^$\n\r]+/g, '').replace(/\s+/g, ' ').trim();
+    cleanedText = text
+      .replace(/\$\$\$[^$\n\r]+/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
   }
 
   return {
     summonedCreature,
-    cleanedDescription: cleanedText
+    cleanedDescription: cleanedText,
   };
 }
 
@@ -184,7 +187,7 @@ function determineAttackInfo(description) {
   };
 
   // Clean up hyphenated words that were split across lines
-  const cleanedDescription = description.replace(/(\w+)-\s*(\w+)/g, '$1$2');
+  const cleanedDescription = description.replace(/(\w+)-\s*(\w+)/g, "$1$2");
 
   if (cleanedDescription.includes("spell attack")) {
     result.attackType = "spell_attack";
@@ -192,7 +195,9 @@ function determineAttackInfo(description) {
     result.attackType = "saving_throw";
 
     // Try to extract saving throw ability - look for full ability names first
-    const fullAbilityMatch = cleanedDescription.match(/(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s+saving\s+throw/i);
+    const fullAbilityMatch = cleanedDescription.match(
+      /(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s+saving\s+throw/i
+    );
     if (fullAbilityMatch) {
       const ability = fullAbilityMatch[1];
       result.savingThrow = {
@@ -207,13 +212,13 @@ function determineAttackInfo(description) {
 
         // Fix common fragments from hyphenation
         const fragmentMap = {
-          'ity': 'Dexterity',
-          'dom': 'Wisdom',
-          'ength': 'Strength',
-          'ution': 'Constitution',
-          'gence': 'Intelligence',
-          'risma': 'Charisma',
-          'a': 'Charisma', // Sometimes just 'a' from 'Charism-a'
+          ity: "Dexterity",
+          dom: "Wisdom",
+          ength: "Strength",
+          ution: "Constitution",
+          gence: "Intelligence",
+          risma: "Charisma",
+          a: "Charisma", // Sometimes just 'a' from 'Charism-a'
         };
 
         if (fragmentMap[ability.toLowerCase()]) {
@@ -235,13 +240,13 @@ function determineAttackInfo(description) {
 function cleanHyphenatedText(text) {
   // Fix common hyphenated words that got split across lines
   return text
-    .replace(/Dexter-\s*ity/gi, 'Dexterity')
-    .replace(/Wis-\s*dom/gi, 'Wisdom')
-    .replace(/Str-\s*ength/gi, 'Strength')
-    .replace(/Consti-\s*tution/gi, 'Constitution')
-    .replace(/Intel-\s*ligence/gi, 'Intelligence')
-    .replace(/Charis-\s*ma/gi, 'Charisma')
-    .replace(/(\w+)-\s+(\w+)/g, '$1$2'); // General pattern for any hyphenated word
+    .replace(/Dexter-\s*ity/gi, "Dexterity")
+    .replace(/Wis-\s*dom/gi, "Wisdom")
+    .replace(/Str-\s*ength/gi, "Strength")
+    .replace(/Consti-\s*tution/gi, "Constitution")
+    .replace(/Intel-\s*ligence/gi, "Intelligence")
+    .replace(/Charis-\s*ma/gi, "Charisma")
+    .replace(/(\w+)-\s+(\w+)/g, "$1$2"); // General pattern for any hyphenated word
 }
 
 // Helper function to finalize spell

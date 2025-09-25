@@ -638,7 +638,7 @@ function parseMonsterEntry(text) {
       monster.abilityScores = parsedAbilities;
     }
   } else {
-    console.log('No abilities found for: ', monster.name);
+    console.log("No abilities found for: ", monster.name);
   }
 
   // Parse skills as string array
