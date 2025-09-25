@@ -181,7 +181,9 @@ export default function SpellsDatabase() {
                 ))}
               </div>
             </div>
+          </div>
 
+          <div className="flex flex-wrap items-center gap-3 pt-3">
             {/* Modern Dropdown Filters */}
             <div className="relative" ref={schoolDropdownRef}>
               <button
