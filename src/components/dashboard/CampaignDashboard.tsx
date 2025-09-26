@@ -13,9 +13,9 @@ interface CreateCampaignModalProps {
 }
 
 const CreateCampaignModal = ({ onClose }: CreateCampaignModalProps) => (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div className="bg-white rounded-lg p-6 w-full max-w-md">
-      <h3 className="text-xl font-bold mb-4">Create New Campaign</h3>
+  <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 backdrop-blur-sm">
+    <div className="bg-gray-900 border border-gray-700 rounded-lg p-6 w-full max-w-md">
+      <h3 className="text-xl font-bold text-white mb-4">Create New Campaign</h3>
       <form
         className="space-y-4"
         onSubmit={(e) => {
@@ -25,24 +25,24 @@ const CreateCampaignModal = ({ onClose }: CreateCampaignModalProps) => (
         }}
       >
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Campaign Name</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Campaign Name</label>
           <input
             type="text"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Description</label>
           <textarea
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white"
           />
         </div>
         <div className="flex justify-end space-x-3">
-          <button type="button" onClick={onClose} className="px-4 py-2 text-gray-600 hover:text-gray-800">
+          <button type="button" onClick={onClose} className="px-4 py-2 text-gray-400 hover:text-gray-200">
             Cancel
           </button>
-          <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+          <button type="submit" className="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg hover:from-cyan-600 hover:to-blue-600">
             Create Campaign
           </button>
         </div>
@@ -56,21 +56,21 @@ export default function CampaignDashboard({ onCampaignSelect, currentCampaign }:
   const [campaigns] = useState(mockCampaigns);
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-gray-900 min-h-screen">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-900">Campaign Dashboard</h1>
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-transparent bg-clip-text">Campaign Dashboard</h1>
         <div className="flex space-x-3">
-          <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+          <button className="flex items-center px-4 py-2 bg-gray-800 text-gray-300 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700">
             <Upload className="size-4 mr-2" />
             Import
           </button>
-          <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+          <button className="flex items-center px-4 py-2 bg-gray-800 text-gray-300 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700">
             <Download className="size-4 mr-2" />
             Export
           </button>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            className="flex items-center px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg hover:from-cyan-600 hover:to-blue-600 transition-colors shadow-lg"
           >
             <Plus className="size-4 mr-2" />
             New Campaign
@@ -79,7 +79,7 @@ export default function CampaignDashboard({ onCampaignSelect, currentCampaign }:
       </div>
 
       {currentCampaign && (
-        <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg p-6 mb-6">
+        <div className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-xl p-6 mb-6 border border-cyan-500/20 shadow-2xl">
           <h2 className="text-xl font-bold mb-2">Current Campaign</h2>
           <h3 className="text-2xl font-bold mb-2">{currentCampaign.name}</h3>
           <p className="opacity-90 mb-4">{currentCampaign.description}</p>
@@ -101,17 +101,17 @@ export default function CampaignDashboard({ onCampaignSelect, currentCampaign }:
         {campaigns.map((campaign) => (
           <div
             key={campaign.id}
-            className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200"
+            className="bg-gray-800 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-cyan-500/50 group"
           >
             <div
-              className="h-48 bg-cover bg-center rounded-t-lg"
+              className="h-48 bg-cover bg-center rounded-t-xl"
               style={{ backgroundImage: `url(${campaign.thumbnail})` }}
             />
             <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{campaign.name}</h3>
-              <p className="text-gray-600 mb-4 text-sm line-clamp-2">{campaign.description}</p>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">{campaign.name}</h3>
+              <p className="text-gray-300 mb-4 text-sm line-clamp-2">{campaign.description}</p>
 
-              <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+              <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
                 <span className="flex items-center">
                   <Users className="size-4 mr-1" />
                   {campaign.players}
@@ -129,7 +129,7 @@ export default function CampaignDashboard({ onCampaignSelect, currentCampaign }:
                 </span>
                 <button
                   onClick={() => onCampaignSelect(campaign)}
-                  className="flex items-center px-3 py-1.5 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors text-sm"
+                  className="flex items-center px-3 py-1.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-md hover:from-cyan-600 hover:to-blue-600 transition-colors text-sm shadow-lg"
                 >
                   <Play className="size-4 mr-1" />
                   Select

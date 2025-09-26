@@ -54,34 +54,34 @@ const MenuItemComponent = ({ item, isActive, disabled = false, onClick }: MenuIt
     disabled={disabled}
     className={`w-full flex items-center px-4 py-3 text-left transition-colors rounded-lg mb-1 ${
       isActive
-        ? "bg-blue-500 text-white"
+        ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
         : disabled
-          ? "text-gray-400 cursor-not-allowed"
-          : "text-gray-700 hover:bg-gray-100"
+          ? "text-gray-500 cursor-not-allowed"
+          : "text-gray-300 hover:bg-gray-700/50"
     }`}
   >
     <item.icon className="size-5 mr-3" />
     <span className="font-medium">{item.label}</span>
-    {disabled && <span className="ml-auto text-xs">(Select Campaign)</span>}
+    {disabled && <span className="ml-auto text-xs text-gray-500">(Select Campaign)</span>}
   </button>
 );
 
 export default function Sidebar({ currentPage, onNavigate, currentCampaign, onLogout }: SidebarProps) {
   return (
-    <div className="bg-white h-screen w-64 shadow-lg flex flex-col">
-      <div className="p-6 border-b border-gray-200">
-        <h1 className="text-xl font-bold text-gray-900">DM Panel</h1>
+    <div className="bg-gray-800 h-screen w-64 shadow-2xl flex flex-col border-r border-gray-700">
+      <div className="p-6 border-b border-gray-700">
+        <h1 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 text-transparent bg-clip-text">DM Panel</h1>
         {currentCampaign && (
           <div className="mt-2">
-            <p className="text-sm text-gray-500">Current Campaign:</p>
-            <p className="font-medium text-blue-600 truncate">{currentCampaign.name}</p>
+            <p className="text-sm text-gray-400">Current Campaign:</p>
+            <p className="font-medium text-cyan-300 truncate">{currentCampaign.name}</p>
           </div>
         )}
       </div>
 
       <nav className="flex-1 p-4">
         <div className="mb-6">
-          <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Global Features</h2>
+          <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Global Features</h2>
           {globalFeatures.map((item) => (
             <MenuItemComponent
               key={item.id}
@@ -93,9 +93,9 @@ export default function Sidebar({ currentPage, onNavigate, currentCampaign, onLo
         </div>
 
         <div>
-          <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3 flex items-center">
+          <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3 flex items-center">
             Campaign Features
-            {!currentCampaign && <ChevronRight className="size-4 ml-2 text-gray-400" />}
+            {!currentCampaign && <ChevronRight className="size-4 ml-2 text-gray-500" />}
           </h2>
           {campaignFeatures.map((item) => (
             <MenuItemComponent
@@ -109,10 +109,10 @@ export default function Sidebar({ currentPage, onNavigate, currentCampaign, onLo
         </div>
       </nav>
 
-      <div className="p-4 border-t border-gray-200">
+      <div className="p-4 border-t border-gray-700">
         <button
           onClick={onLogout}
-          className="w-full flex items-center px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
+          className="w-full flex items-center px-4 py-3 text-gray-300 hover:bg-red-900/30 hover:text-red-400 rounded-lg transition-colors"
         >
           <LogOut className="size-5 mr-3" />
           <span className="font-medium">Sign Out</span>

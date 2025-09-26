@@ -114,26 +114,26 @@ export default function SessionJournal() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-gray-900 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center">
-            <Calendar className="size-8 mr-3 text-indigo-600" />
+          <h1 className="text-3xl font-bold text-white flex items-center">
+            <Calendar className="size-8 mr-3 text-indigo-400" />
             Session Journal
           </h1>
           <div className="flex gap-4 text-sm">
-            <span className="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-medium">
+            <span className="bg-indigo-700 text-indigo-200 px-3 py-1 rounded-full font-medium">
               {totalSessions} sessions
             </span>
-            <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">{totalHours}h played</span>
-            <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-medium">
+            <span className="bg-green-700 text-green-200 px-3 py-1 rounded-full font-medium">{totalHours}h played</span>
+            <span className="bg-yellow-700 text-yellow-200 px-3 py-1 rounded-full font-medium">
               {totalExperience} XP total
             </span>
           </div>
         </div>
         <button
           onClick={handleAddSession}
-          className="flex items-center px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors"
+          className="flex items-center px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:from-indigo-600 hover:to-purple-600 transition-colors shadow-lg"
         >
           <Plus className="size-4 mr-2" />
           New Session
@@ -143,28 +143,28 @@ export default function SessionJournal() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Sessions List */}
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 max-h-[800px] overflow-y-auto">
-            <div className="p-4 bg-indigo-50 border-b">
-              <h3 className="font-semibold text-gray-900">Campaign Sessions</h3>
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 max-h-[800px] overflow-y-auto">
+            <div className="p-4 bg-indigo-800/30 border-b border-gray-700">
+              <h3 className="font-semibold text-white">Campaign Sessions</h3>
             </div>
             {sessions.length === 0 ? (
-              <div className="p-8 text-center text-gray-500">
-                <Calendar className="size-12 mx-auto mb-4 text-gray-300" />
+              <div className="p-8 text-center text-gray-400">
+                <Calendar className="size-12 mx-auto mb-4 text-gray-500" />
                 <p>No sessions recorded yet</p>
               </div>
             ) : (
-              <div className="divide-y divide-gray-200">
+              <div className="divide-y divide-gray-700">
                 {sessions.map((session) => (
                   <div
                     key={session.id}
                     onClick={() => setSelectedSession(session)}
-                    className={`p-4 cursor-pointer transition-colors hover:bg-indigo-50 ${
-                      selectedSession?.id === session.id ? "bg-indigo-100" : ""
+                    className={`p-4 cursor-pointer transition-colors hover:bg-gray-700/50 ${
+                      selectedSession?.id === session.id ? "bg-gray-700" : ""
                     }`}
                   >
-                    <h4 className="font-semibold text-gray-900 mb-2">{session.title}</h4>
-                    <div className="text-sm text-gray-600 mb-2">{new Date(session.date).toLocaleDateString()}</div>
-                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                    <h4 className="font-semibold text-white mb-2">{session.title}</h4>
+                    <div className="text-sm text-gray-300 mb-2">{new Date(session.date).toLocaleDateString()}</div>
+                    <div className="flex items-center gap-4 text-xs text-gray-400">
                       <span className="flex items-center">
                         <Clock className="size-3 mr-1" />
                         {session.duration}h
@@ -262,7 +262,7 @@ export default function SessionJournal() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-gray-300 mb-2">
                           Participants (one per line)
                         </label>
                         <textarea
@@ -274,22 +274,22 @@ export default function SessionJournal() {
                             })
                           }
                           rows={3}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                          className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 text-white"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Session Summary</label>
+                        <label className="block text-sm font-medium text-gray-300 mb-2">Session Summary</label>
                         <textarea
                           value={editingSession.summary}
                           onChange={(e) => setEditingSession({ ...editingSession, summary: e.target.value })}
                           rows={4}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                          className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 text-white"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-gray-300 mb-2">
                           Key Events (one per line)
                         </label>
                         <textarea
@@ -301,12 +301,12 @@ export default function SessionJournal() {
                             })
                           }
                           rows={4}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                          className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 text-white"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-gray-300 mb-2">
                           Treasure Found (one per line)
                         </label>
                         <textarea
@@ -318,17 +318,17 @@ export default function SessionJournal() {
                             })
                           }
                           rows={3}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                          className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 text-white"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Next Session Plans</label>
+                        <label className="block text-sm font-medium text-gray-300 mb-2">Next Session Plans</label>
                         <textarea
                           value={editingSession.nextSessionPlans}
                           onChange={(e) => setEditingSession({ ...editingSession, nextSessionPlans: e.target.value })}
                           rows={3}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                          className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 text-white"
                         />
                       </div>
                     </div>
@@ -367,29 +367,29 @@ export default function SessionJournal() {
                     <div className="p-6 space-y-6">
                       {/* Session Stats */}
                       <div className="grid grid-cols-3 gap-4">
-                        <div className="bg-blue-50 rounded-lg p-4 text-center">
-                          <Users className="size-6 mx-auto mb-2 text-blue-600" />
-                          <div className="text-2xl font-bold text-blue-600">{selectedSession.participants.length}</div>
-                          <div className="text-sm text-gray-600">Players</div>
+                        <div className="bg-blue-800/30 rounded-lg p-4 text-center border border-blue-700">
+                          <Users className="size-6 mx-auto mb-2 text-blue-400" />
+                          <div className="text-2xl font-bold text-blue-400">{selectedSession.participants.length}</div>
+                          <div className="text-sm text-gray-300">Players</div>
                         </div>
-                        <div className="bg-yellow-50 rounded-lg p-4 text-center">
-                          <FileText className="size-6 mx-auto mb-2 text-yellow-600" />
-                          <div className="text-2xl font-bold text-yellow-600">{selectedSession.experienceAwarded}</div>
-                          <div className="text-sm text-gray-600">Experience</div>
+                        <div className="bg-yellow-800/30 rounded-lg p-4 text-center border border-yellow-700">
+                          <FileText className="size-6 mx-auto mb-2 text-yellow-400" />
+                          <div className="text-2xl font-bold text-yellow-400">{selectedSession.experienceAwarded}</div>
+                          <div className="text-sm text-gray-300">Experience</div>
                         </div>
-                        <div className="bg-green-50 rounded-lg p-4 text-center">
-                          <Clock className="size-6 mx-auto mb-2 text-green-600" />
-                          <div className="text-2xl font-bold text-green-600">{selectedSession.duration}</div>
-                          <div className="text-sm text-gray-600">Hours</div>
+                        <div className="bg-green-800/30 rounded-lg p-4 text-center border border-green-700">
+                          <Clock className="size-6 mx-auto mb-2 text-green-400" />
+                          <div className="text-2xl font-bold text-green-400">{selectedSession.duration}</div>
+                          <div className="text-sm text-gray-300">Hours</div>
                         </div>
                       </div>
 
                       {/* Participants */}
                       <div>
-                        <h3 className="font-semibold text-gray-900 mb-3">Participants</h3>
+                        <h3 className="font-semibold text-white mb-3">Participants</h3>
                         <div className="flex flex-wrap gap-2">
                           {selectedSession.participants.map((participant, index) => (
-                            <span key={index} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                            <span key={index} className="bg-blue-700 text-blue-200 px-3 py-1 rounded-full text-sm">
                               {participant}
                             </span>
                           ))}
@@ -398,19 +398,19 @@ export default function SessionJournal() {
 
                       {/* Summary */}
                       <div>
-                        <h3 className="font-semibold text-gray-900 mb-3">Session Summary</h3>
-                        <p className="text-gray-700 leading-relaxed">{selectedSession.summary}</p>
+                        <h3 className="font-semibold text-white mb-3">Session Summary</h3>
+                        <p className="text-gray-300 leading-relaxed">{selectedSession.summary}</p>
                       </div>
 
                       {/* Key Events */}
                       {selectedSession.keyEvents.length > 0 && (
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-3">Key Events</h3>
+                          <h3 className="font-semibold text-white mb-3">Key Events</h3>
                           <ul className="space-y-2">
                             {selectedSession.keyEvents.map((event, index) => (
                               <li key={index} className="flex items-start">
-                                <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 mr-3 flex-shrink-0" />
-                                <span className="text-gray-700">{event}</span>
+                                <span className="w-2 h-2 bg-indigo-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                                <span className="text-gray-300">{event}</span>
                               </li>
                             ))}
                           </ul>
@@ -420,11 +420,11 @@ export default function SessionJournal() {
                       {/* Treasure */}
                       {selectedSession.treasureFound.length > 0 && (
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-3">Treasure Found</h3>
-                          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                          <h3 className="font-semibold text-white mb-3">Treasure Found</h3>
+                          <div className="bg-yellow-800/30 border border-yellow-700 rounded-lg p-4">
                             <ul className="space-y-1">
                               {selectedSession.treasureFound.map((treasure, index) => (
-                                <li key={index} className="text-yellow-800">
+                                <li key={index} className="text-yellow-300">
                                   • {treasure}
                                 </li>
                               ))}
@@ -436,9 +436,9 @@ export default function SessionJournal() {
                       {/* Next Session Plans */}
                       {selectedSession.nextSessionPlans && (
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-3">Next Session Plans</h3>
-                          <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                            <p className="text-green-800">{selectedSession.nextSessionPlans}</p>
+                          <h3 className="font-semibold text-white mb-3">Next Session Plans</h3>
+                          <div className="bg-green-800/30 border border-green-700 rounded-lg p-4">
+                            <p className="text-green-300">{selectedSession.nextSessionPlans}</p>
                           </div>
                         </div>
                       )}
@@ -447,10 +447,10 @@ export default function SessionJournal() {
                 )}
               </div>
             ) : (
-              <div className="p-12 text-center text-gray-500">
-                <Calendar className="size-16 mx-auto mb-4 text-gray-300" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">No Session Selected</h3>
-                <p className="text-gray-600">Select a session from the list to view its details.</p>
+              <div className="p-12 text-center text-gray-400">
+                <Calendar className="size-16 mx-auto mb-4 text-gray-500" />
+                <h3 className="text-xl font-semibold text-white mb-2">No Session Selected</h3>
+                <p className="text-gray-300">Select a session from the list to view its details.</p>
               </div>
             )}
           </div>

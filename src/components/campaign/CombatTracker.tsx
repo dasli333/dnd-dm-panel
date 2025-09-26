@@ -224,45 +224,45 @@ export default function CombatTracker() {
   const getTypeColor = (type: string) => {
     switch (type) {
       case "player":
-        return "bg-blue-100 text-blue-800";
+        return "bg-blue-700 text-blue-200 border border-blue-600";
       case "monster":
-        return "bg-red-100 text-red-800";
+        return "bg-red-700 text-red-200 border border-red-600";
       case "npc":
-        return "bg-green-100 text-green-800";
+        return "bg-green-700 text-green-200 border border-green-600";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-gray-700 text-gray-200 border border-gray-600";
     }
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-gray-900 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center">
-            <Swords className="size-8 mr-3 text-red-600" />
+          <h1 className="text-3xl font-bold text-white flex items-center">
+            <Swords className="size-8 mr-3 text-red-400" />
             Combat Tracker
           </h1>
           <div className="flex items-center gap-2">
-            <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+            <span className="bg-red-700 text-red-200 px-3 py-1 rounded-full text-sm font-medium">
               Round {encounter.currentRound}
             </span>
             {encounter.isActive && (
-              <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Active</span>
+              <span className="bg-green-700 text-green-200 px-3 py-1 rounded-full text-sm font-medium">Active</span>
             )}
           </div>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowAddParticipant(true)}
-            className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            className="flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:from-blue-600 hover:to-purple-600 transition-colors shadow-xl"
           >
             <Plus className="size-4 mr-2" />
             Add Participant
           </button>
           <button
             onClick={toggleCombat}
-            className={`flex items-center px-4 py-2 text-white rounded-lg transition-colors ${
-              encounter.isActive ? "bg-orange-500 hover:bg-orange-600" : "bg-green-500 hover:bg-green-600"
+            className={`flex items-center px-4 py-2 text-white rounded-lg transition-colors shadow-xl ${
+              encounter.isActive ? "bg-orange-600 hover:bg-orange-700" : "bg-green-600 hover:bg-green-700"
             }`}
           >
             {encounter.isActive ? <Pause className="size-4 mr-2" /> : <Play className="size-4 mr-2" />}
@@ -270,7 +270,7 @@ export default function CombatTracker() {
           </button>
           <button
             onClick={resetCombat}
-            className="flex items-center px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+            className="flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors shadow-xl"
           >
             <RotateCcw className="size-4 mr-2" />
             Reset
@@ -281,18 +281,18 @@ export default function CombatTracker() {
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
         {/* Initiative Tracker */}
         <div className="xl:col-span-3">
-          <div className="bg-white rounded-lg shadow-md border border-gray-200">
-            <div className="p-4 bg-red-50 border-b">
-              <h2 className="text-xl font-semibold text-gray-900 flex items-center">
-                <Clock className="size-5 mr-2" />
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700">
+            <div className="p-4 bg-gray-700 border-b border-gray-600">
+              <h2 className="text-xl font-semibold text-white flex items-center">
+                <Clock className="size-5 mr-2 text-gray-300" />
                 Initiative Order
                 {currentParticipant && (
-                  <span className="ml-4 text-lg text-red-600">Current: {currentParticipant.name}</span>
+                  <span className="ml-4 text-lg text-red-400">Current: {currentParticipant.name}</span>
                 )}
               </h2>
             </div>
 
-            <div className="divide-y divide-gray-200">
+            <div className="divide-y divide-gray-700">
               {sortedParticipants.map((participant, index) => {
                 const isCurrentTurn = index === encounter.currentTurn && encounter.isActive;
                 const healthPercentage = getHealthPercentage(
@@ -304,34 +304,34 @@ export default function CombatTracker() {
                   <div
                     key={participant.id}
                     className={`p-4 transition-colors ${
-                      isCurrentTurn ? "bg-red-100 border-l-4 border-red-500" : "hover:bg-gray-50"
+                      isCurrentTurn ? "bg-red-700/20 border-l-4 border-red-400" : "hover:bg-gray-700/50"
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4 flex-1">
                         <div className="flex items-center space-x-3">
-                          <div className="text-2xl font-bold text-gray-900 w-8 text-center">
+                          <div className="text-2xl font-bold text-white w-8 text-center">
                             {participant.initiative}
                           </div>
                           <div>
                             <div className="flex items-center space-x-2">
-                              <h3 className="text-lg font-semibold text-gray-900">{participant.name}</h3>
+                              <h3 className="text-lg font-semibold text-white">{participant.name}</h3>
                               <span className={`text-xs px-2 py-1 rounded-full ${getTypeColor(participant.type)}`}>
                                 {participant.type}
                               </span>
                               {isCurrentTurn && (
-                                <span className="bg-red-500 text-white px-2 py-1 rounded text-xs font-medium">
+                                <span className="bg-red-600 text-white px-2 py-1 rounded text-xs font-medium">
                                   CURRENT TURN
                                 </span>
                               )}
                             </div>
                             <div className="flex items-center space-x-4 mt-1">
                               <div className="flex items-center space-x-2">
-                                <Heart className="size-4 text-red-500" />
-                                <span className="text-sm">
+                                <Heart className="size-4 text-red-400" />
+                                <span className="text-sm text-gray-300">
                                   {participant.hitPoints.current}/{participant.hitPoints.maximum}
                                 </span>
-                                <div className="w-20 h-2 bg-gray-200 rounded-full">
+                                <div className="w-20 h-2 bg-gray-700 rounded-full">
                                   <div
                                     className={`h-full rounded-full ${getHealthColor(healthPercentage)}`}
                                     style={{ width: `${healthPercentage}%` }}
@@ -339,8 +339,8 @@ export default function CombatTracker() {
                                 </div>
                               </div>
                               <div className="flex items-center space-x-1">
-                                <Shield className="size-4 text-blue-500" />
-                                <span className="text-sm">{participant.armorClass}</span>
+                                <Shield className="size-4 text-blue-400" />
+                                <span className="text-sm text-gray-300">{participant.armorClass}</span>
                               </div>
                             </div>
                           </div>
@@ -353,7 +353,7 @@ export default function CombatTracker() {
                               <button
                                 key={effectIndex}
                                 onClick={() => removeStatusEffect(participant.id, effectIndex)}
-                                className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs hover:bg-purple-200 transition-colors"
+                                className="bg-purple-700 text-purple-200 px-2 py-1 rounded text-xs hover:bg-purple-600 transition-colors border border-purple-600"
                                 title={effect.description}
                               >
                                 {effect.name}
@@ -369,13 +369,13 @@ export default function CombatTracker() {
                         <div className="flex items-center space-x-1">
                           <button
                             onClick={() => updateParticipantHP(participant.id, participant.hitPoints.current - 1)}
-                            className="w-8 h-8 flex items-center justify-center bg-red-100 text-red-600 rounded hover:bg-red-200 text-lg font-bold"
+                            className="w-8 h-8 flex items-center justify-center bg-red-700 text-red-200 rounded hover:bg-red-600 text-lg font-bold border border-red-600"
                           >
                             -
                           </button>
                           <button
                             onClick={() => updateParticipantHP(participant.id, participant.hitPoints.current + 1)}
-                            className="w-8 h-8 flex items-center justify-center bg-green-100 text-green-600 rounded hover:bg-green-200 text-lg font-bold"
+                            className="w-8 h-8 flex items-center justify-center bg-green-700 text-green-200 rounded hover:bg-green-600 text-lg font-bold border border-green-600"
                           >
                             +
                           </button>
@@ -384,13 +384,13 @@ export default function CombatTracker() {
                         {/* Actions */}
                         <button
                           onClick={() => setEditingParticipant(participant)}
-                          className="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg"
+                          className="p-2 text-gray-400 hover:text-gray-200 hover:bg-gray-700 rounded-lg"
                         >
                           <Edit3 className="size-4" />
                         </button>
                         <button
                           onClick={() => removeParticipant(participant.id)}
-                          className="p-2 text-red-600 hover:text-red-800 hover:bg-red-100 rounded-lg"
+                          className="p-2 text-red-400 hover:text-red-200 hover:bg-red-700 rounded-lg"
                         >
                           <Trash2 className="size-4" />
                         </button>
@@ -402,10 +402,10 @@ export default function CombatTracker() {
             </div>
 
             {encounter.isActive && (
-              <div className="p-4 bg-gray-50 border-t">
+              <div className="p-4 bg-gray-700 border-t border-gray-600">
                 <button
                   onClick={nextTurn}
-                  className="w-full flex items-center justify-center px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                  className="w-full flex items-center justify-center px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors shadow-xl"
                 >
                   <Clock className="size-5 mr-2" />
                   Next Turn
@@ -418,14 +418,14 @@ export default function CombatTracker() {
         {/* Side Panel */}
         <div className="space-y-6">
           {/* Combat Log */}
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Combat Log</h3>
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-4">
+            <h3 className="font-semibold text-white mb-3">Combat Log</h3>
             <div className="space-y-2 max-h-40 overflow-y-auto text-sm">
               {encounter.log.length === 0 ? (
-                <p className="text-gray-500 italic">No actions logged yet</p>
+                <p className="text-gray-400 italic">No actions logged yet</p>
               ) : (
                 encounter.log.map((entry, index) => (
-                  <div key={index} className="text-gray-700">
+                  <div key={index} className="text-gray-300">
                     {entry}
                   </div>
                 ))
@@ -434,13 +434,13 @@ export default function CombatTracker() {
           </div>
 
           {/* Status Effects Quick Add */}
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Quick Status Effects</h3>
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-4">
+            <h3 className="font-semibold text-white mb-3">Quick Status Effects</h3>
             <div className="space-y-2">
               {mockStatusEffects.map((effect) => (
                 <button
                   key={effect.name}
-                  className="w-full text-left p-2 bg-purple-50 hover:bg-purple-100 rounded-lg text-sm transition-colors"
+                  className="w-full text-left p-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-sm transition-colors text-gray-300 border border-gray-600"
                   title={effect.description}
                 >
                   {effect.name}
@@ -454,25 +454,25 @@ export default function CombatTracker() {
       {/* Add Participant Modal */}
       {showAddParticipant && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md">
-            <h3 className="text-xl font-bold mb-4">Add Participant</h3>
+          <div className="bg-gray-800 rounded-lg p-6 w-full max-w-md border border-gray-700">
+            <h3 className="text-xl font-bold mb-4 text-white">Add Participant</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Name</label>
                 <input
                   type="text"
                   value={newParticipant.name || ""}
                   onChange={(e) => setNewParticipant({ ...newParticipant, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Type</label>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Type</label>
                   <select
                     value={newParticipant.type}
                     onChange={(e) => setNewParticipant({ ...newParticipant, type: e.target.value as any })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 text-white"
                   >
                     <option value="player">Player</option>
                     <option value="monster">Monster</option>
@@ -480,20 +480,20 @@ export default function CombatTracker() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Initiative</label>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Initiative</label>
                   <input
                     type="number"
                     value={newParticipant.initiative || 10}
                     onChange={(e) =>
                       setNewParticipant({ ...newParticipant, initiative: parseInt(e.target.value) || 10 })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 text-white"
                   />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Max HP</label>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Max HP</label>
                   <input
                     type="number"
                     value={newParticipant.hitPoints?.maximum || 20}
@@ -504,18 +504,18 @@ export default function CombatTracker() {
                         hitPoints: { current: maxHP, maximum: maxHP },
                       });
                     }}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">AC</label>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">AC</label>
                   <input
                     type="number"
                     value={newParticipant.armorClass || 12}
                     onChange={(e) =>
                       setNewParticipant({ ...newParticipant, armorClass: parseInt(e.target.value) || 12 })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 text-white"
                   />
                 </div>
               </div>
@@ -523,13 +523,13 @@ export default function CombatTracker() {
             <div className="flex justify-end space-x-3 mt-6">
               <button
                 onClick={() => setShowAddParticipant(false)}
-                className="px-4 py-2 text-gray-600 hover:text-gray-800"
+                className="px-4 py-2 text-gray-300 hover:text-white"
               >
                 Cancel
               </button>
               <button
                 onClick={addParticipant}
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:from-blue-600 hover:to-purple-600 shadow-xl"
               >
                 Add Participant
               </button>

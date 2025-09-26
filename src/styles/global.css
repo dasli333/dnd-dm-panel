@@ -1,8 +1,38 @@
 @import "tailwindcss";
 
-/* Custom CSS variables for our D&D theme */
+/* Dark theme variables */
 :root {
   --radius: 0.5rem;
+
+  /* Background colors */
+  --bg-primary: #0a0a0b;
+  --bg-secondary: #111115;
+  --bg-tertiary: #1a1a1f;
+  --bg-accent: #252530;
+
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  /* Border colors */
+  --border-primary: #27272a;
+  --border-secondary: #3f3f46;
+
+  /* Accent colors */
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --accent-cyan: #06b6d4;
+  --accent-emerald: #10b981;
+
+  /* Card backgrounds */
+  --card-bg: rgba(39, 39, 42, 0.4);
+  --card-hover: rgba(63, 63, 70, 0.3);
+
+  /* Scrollbar colors */
+  --scrollbar-track: #27272a;
+  --scrollbar-thumb: #52525b;
+  --scrollbar-thumb-hover: #71717a;
 }
 
 /* Custom scrollbar styling */
@@ -11,16 +41,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1a876;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a08960;
+  background: var(--scrollbar-thumb-hover);
 }
 
 /* Base styles */
@@ -32,6 +62,8 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 /* Utility classes for truncating text */

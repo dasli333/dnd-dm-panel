@@ -77,14 +77,14 @@ export default function DMPanelApp() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full size-32 border-b-2 border-blue-500"></div>
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+        <div className="animate-spin rounded-full size-32 border-b-2 border-cyan-400"></div>
       </div>
     );
   }
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-950">
       <Sidebar
         currentPage={currentPage}
         onNavigate={handleNavigate}

@@ -185,20 +185,20 @@ export default function CharacterSheets() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-gray-900 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center">
-            <Users className="size-8 mr-3 text-blue-600" />
+          <h1 className="text-3xl font-bold text-white flex items-center">
+            <Users className="size-8 mr-3 text-blue-400" />
             Character Sheets
           </h1>
-          <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+          <span className="bg-blue-700 text-blue-200 px-3 py-1 rounded-full text-sm font-medium">
             {characters.length} characters
           </span>
         </div>
         <button
           onClick={() => setShowAddModal(true)}
-          className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+          className="flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:from-blue-600 hover:to-purple-600 transition-colors shadow-xl"
         >
           <Plus className="size-4 mr-2" />
           Add Character
@@ -208,28 +208,28 @@ export default function CharacterSheets() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Characters List */}
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
-            <div className="p-4 bg-blue-50 border-b">
-              <h3 className="font-semibold text-gray-900">Party Members</h3>
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 overflow-hidden">
+            <div className="p-4 bg-gray-700 border-b border-gray-600">
+              <h3 className="font-semibold text-white">Party Members</h3>
             </div>
-            <div className="divide-y divide-gray-200">
+            <div className="divide-y divide-gray-700">
               {characters.map((character) => (
                 <div
                   key={character.id}
                   onClick={() => setSelectedCharacter(character)}
-                  className={`p-4 cursor-pointer transition-colors hover:bg-blue-50 ${
-                    selectedCharacter?.id === character.id ? "bg-blue-100" : ""
+                  className={`p-4 cursor-pointer transition-colors hover:bg-gray-700/50 ${
+                    selectedCharacter?.id === character.id ? "bg-gray-700" : ""
                   }`}
                 >
-                  <h4 className="font-semibold text-gray-900">{character.name}</h4>
-                  <div className="text-sm text-gray-600 mb-1">Played by {character.playerName}</div>
-                  <div className="text-sm text-gray-500">
+                  <h4 className="font-semibold text-white">{character.name}</h4>
+                  <div className="text-sm text-gray-300 mb-1">Played by {character.playerName}</div>
+                  <div className="text-sm text-gray-400">
                     Level {character.level} {character.race} {character.class}
                   </div>
-                  <div className="flex items-center mt-2 text-xs text-gray-500">
-                    <Heart className="size-3 mr-1 text-red-500" />
+                  <div className="flex items-center mt-2 text-xs text-gray-400">
+                    <Heart className="size-3 mr-1 text-red-400" />
                     {character.hitPoints.current}/{character.hitPoints.maximum}
-                    <Shield className="size-3 ml-3 mr-1 text-blue-500" />
+                    <Shield className="size-3 ml-3 mr-1 text-blue-400" />
                     {character.armorClass}
                   </div>
                 </div>
@@ -241,7 +241,7 @@ export default function CharacterSheets() {
         {/* Character Sheet */}
         <div className="lg:col-span-3">
           {selectedCharacter ? (
-            <div className="bg-white rounded-lg shadow-md border border-gray-200">
+            <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700">
               {/* Header */}
               <div className="p-6 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-t-lg">
                 <div className="flex items-center justify-between">
@@ -276,14 +276,14 @@ export default function CharacterSheets() {
                     <div className="flex justify-end gap-2 mb-4">
                       <button
                         onClick={handleSaveCharacter}
-                        className="flex items-center px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                        className="flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors shadow-xl"
                       >
                         <Save className="size-4 mr-2" />
                         Save
                       </button>
                       <button
                         onClick={handleCancelEdit}
-                        className="flex items-center px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+                        className="flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors shadow-xl"
                       >
                         <X className="size-4 mr-2" />
                         Cancel
@@ -291,37 +291,37 @@ export default function CharacterSheets() {
                     </div>
 
                     {/* HP Editor */}
-                    <div className="bg-red-50 rounded-lg p-4">
-                      <h3 className="font-semibold text-gray-900 mb-3 flex items-center">
-                        <Heart className="size-5 mr-2 text-red-500" />
+                    <div className="bg-gray-700 rounded-lg p-4 border border-gray-600">
+                      <h3 className="font-semibold text-white mb-3 flex items-center">
+                        <Heart className="size-5 mr-2 text-red-400" />
                         Hit Points
                       </h3>
                       <div className="grid grid-cols-3 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">Current</label>
+                          <label className="block text-sm font-medium text-gray-300 mb-1">Current</label>
                           <input
                             type="number"
                             value={editingCharacter.hitPoints.current}
                             onChange={(e) => handleHPChange("current", parseInt(e.target.value) || 0)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 text-white"
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">Maximum</label>
+                          <label className="block text-sm font-medium text-gray-300 mb-1">Maximum</label>
                           <input
                             type="number"
                             value={editingCharacter.hitPoints.maximum}
                             onChange={(e) => handleHPChange("maximum", parseInt(e.target.value) || 0)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 text-white"
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">Temporary</label>
+                          <label className="block text-sm font-medium text-gray-300 mb-1">Temporary</label>
                           <input
                             type="number"
                             value={editingCharacter.hitPoints.temporary}
                             onChange={(e) => handleHPChange("temporary", parseInt(e.target.value) || 0)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 text-white"
                           />
                         </div>
                       </div>
@@ -329,12 +329,12 @@ export default function CharacterSheets() {
 
                     {/* Notes Editor */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Notes</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Notes</label>
                       <textarea
                         value={editingCharacter.notes}
                         onChange={(e) => setEditingCharacter({ ...editingCharacter, notes: e.target.value })}
                         rows={4}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400"
                       />
                     </div>
                   </div>
@@ -344,16 +344,16 @@ export default function CharacterSheets() {
                     {/* Core Stats */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {/* Hit Points */}
-                      <div className="bg-red-50 rounded-lg p-4">
-                        <h3 className="font-semibold text-gray-900 mb-3 flex items-center">
-                          <Heart className="size-5 mr-2 text-red-500" />
+                      <div className="bg-gray-700 rounded-lg p-4 border border-gray-600">
+                        <h3 className="font-semibold text-white mb-3 flex items-center">
+                          <Heart className="size-5 mr-2 text-red-400" />
                           Hit Points
                         </h3>
                         <div className="text-center">
-                          <div className="text-3xl font-bold text-red-600">{selectedCharacter.hitPoints.current}</div>
-                          <div className="text-gray-600">/ {selectedCharacter.hitPoints.maximum}</div>
+                          <div className="text-3xl font-bold text-red-400">{selectedCharacter.hitPoints.current}</div>
+                          <div className="text-gray-300">/ {selectedCharacter.hitPoints.maximum}</div>
                           {selectedCharacter.hitPoints.temporary > 0 && (
-                            <div className="text-sm text-blue-600 mt-1">
+                            <div className="text-sm text-blue-400 mt-1">
                               +{selectedCharacter.hitPoints.temporary} temp
                             </div>
                           )}
@@ -361,42 +361,42 @@ export default function CharacterSheets() {
                       </div>
 
                       {/* Armor Class */}
-                      <div className="bg-blue-50 rounded-lg p-4">
-                        <h3 className="font-semibold text-gray-900 mb-3 flex items-center">
-                          <Shield className="size-5 mr-2 text-blue-500" />
+                      <div className="bg-gray-700 rounded-lg p-4 border border-gray-600">
+                        <h3 className="font-semibold text-white mb-3 flex items-center">
+                          <Shield className="size-5 mr-2 text-blue-400" />
                           Armor Class
                         </h3>
                         <div className="text-center">
-                          <div className="text-3xl font-bold text-blue-600">{selectedCharacter.armorClass}</div>
+                          <div className="text-3xl font-bold text-blue-400">{selectedCharacter.armorClass}</div>
                         </div>
                       </div>
 
                       {/* Proficiency Bonus */}
-                      <div className="bg-green-50 rounded-lg p-4">
-                        <h3 className="font-semibold text-gray-900 mb-3 flex items-center">
-                          <Zap className="size-5 mr-2 text-green-500" />
+                      <div className="bg-gray-700 rounded-lg p-4 border border-gray-600">
+                        <h3 className="font-semibold text-white mb-3 flex items-center">
+                          <Zap className="size-5 mr-2 text-green-400" />
                           Proficiency
                         </h3>
                         <div className="text-center">
-                          <div className="text-3xl font-bold text-green-600">+{selectedCharacter.proficiencyBonus}</div>
+                          <div className="text-3xl font-bold text-green-400">+{selectedCharacter.proficiencyBonus}</div>
                         </div>
                       </div>
                     </div>
 
                     {/* Ability Scores */}
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-3 flex items-center">
-                        <Dice6 className="size-5 mr-2" />
+                      <h3 className="font-semibold text-white mb-3 flex items-center">
+                        <Dice6 className="size-5 mr-2 text-gray-300" />
                         Ability Scores
                       </h3>
                       <div className="grid grid-cols-6 gap-4">
                         {Object.entries(selectedCharacter.stats).map(([ability, score]) => (
-                          <div key={ability} className="text-center bg-gray-50 rounded-lg p-3">
-                            <div className="text-xs font-medium text-gray-600 uppercase mb-1">
+                          <div key={ability} className="text-center bg-gray-700 rounded-lg p-3 border border-gray-600">
+                            <div className="text-xs font-medium text-gray-300 uppercase mb-1">
                               {ability.slice(0, 3)}
                             </div>
-                            <div className="text-xl font-bold text-gray-900">{score}</div>
-                            <div className="text-sm text-gray-600">{getModifierText(score)}</div>
+                            <div className="text-xl font-bold text-white">{score}</div>
+                            <div className="text-sm text-gray-300">{getModifierText(score)}</div>
                           </div>
                         ))}
                       </div>
@@ -404,12 +404,12 @@ export default function CharacterSheets() {
 
                     {/* Skills */}
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-3">Proficient Skills</h3>
+                      <h3 className="font-semibold text-white mb-3">Proficient Skills</h3>
                       <div className="flex flex-wrap gap-2">
                         {Object.entries(selectedCharacter.skills)
                           .filter(([, proficient]) => proficient)
                           .map(([skill]) => (
-                            <span key={skill} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                            <span key={skill} className="bg-blue-700 text-blue-200 px-3 py-1 rounded-full text-sm border border-blue-600">
                               {skill}
                             </span>
                           ))}
@@ -418,10 +418,10 @@ export default function CharacterSheets() {
 
                     {/* Equipment */}
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-3">Equipment</h3>
+                      <h3 className="font-semibold text-white mb-3">Equipment</h3>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                         {selectedCharacter.equipment.map((item, index) => (
-                          <div key={index} className="bg-gray-100 text-gray-700 px-3 py-2 rounded text-sm">
+                          <div key={index} className="bg-gray-700 text-gray-300 px-3 py-2 rounded text-sm border border-gray-600">
                             {item}
                           </div>
                         ))}
@@ -431,10 +431,10 @@ export default function CharacterSheets() {
                     {/* Spells */}
                     {selectedCharacter.spells.length > 0 && (
                       <div>
-                        <h3 className="font-semibold text-gray-900 mb-3">Known Spells</h3>
+                        <h3 className="font-semibold text-white mb-3">Known Spells</h3>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                           {selectedCharacter.spells.map((spell, index) => (
-                            <div key={index} className="bg-purple-100 text-purple-800 px-3 py-2 rounded text-sm">
+                            <div key={index} className="bg-purple-700 text-purple-200 px-3 py-2 rounded text-sm border border-purple-600">
                               {spell}
                             </div>
                           ))}
@@ -445,9 +445,9 @@ export default function CharacterSheets() {
                     {/* Notes */}
                     {selectedCharacter.notes && (
                       <div>
-                        <h3 className="font-semibold text-gray-900 mb-3">Notes</h3>
-                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                          <p className="text-gray-700">{selectedCharacter.notes}</p>
+                        <h3 className="font-semibold text-white mb-3">Notes</h3>
+                        <div className="bg-gray-700 border border-gray-600 rounded-lg p-4">
+                          <p className="text-gray-300">{selectedCharacter.notes}</p>
                         </div>
                       </div>
                     )}
@@ -456,10 +456,10 @@ export default function CharacterSheets() {
               </div>
             </div>
           ) : (
-            <div className="bg-white rounded-lg shadow-md border border-gray-200 p-12 text-center">
-              <Users className="size-16 mx-auto mb-4 text-gray-300" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No Character Selected</h3>
-              <p className="text-gray-600">Select a character from the list to view their sheet.</p>
+            <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-12 text-center">
+              <Users className="size-16 mx-auto mb-4 text-gray-500" />
+              <h3 className="text-xl font-semibold text-white mb-2">No Character Selected</h3>
+              <p className="text-gray-300">Select a character from the list to view their sheet.</p>
             </div>
           )}
         </div>

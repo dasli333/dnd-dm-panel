@@ -161,20 +161,20 @@ export default function StoryNotes() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-gray-900 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center">
-            <BookOpen className="size-8 mr-3 text-amber-600" />
+          <h1 className="text-3xl font-bold text-white flex items-center">
+            <BookOpen className="size-8 mr-3 text-amber-400" />
             Story & World Notes
           </h1>
-          <span className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium">
+          <span className="bg-amber-700 text-amber-200 px-3 py-1 rounded-full text-sm font-medium">
             {filteredNotes.length} notes
           </span>
         </div>
         <button
           onClick={handleAddNote}
-          className="flex items-center px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors"
+          className="flex items-center px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg hover:from-amber-600 hover:to-orange-600 transition-colors shadow-lg"
         >
           <Plus className="size-4 mr-2" />
           Add Note
@@ -185,7 +185,7 @@ export default function StoryNotes() {
         {/* Filters & Categories */}
         <div className="lg:col-span-1 space-y-6">
           {/* Search */}
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4">
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-4">
             <div className="relative">
               <Search className="absolute left-3 top-2.5 size-4 text-gray-400" />
               <input
@@ -193,22 +193,22 @@ export default function StoryNotes() {
                 placeholder="Search notes..."
                 value={filters.search}
                 onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-white placeholder-gray-400"
               />
             </div>
           </div>
 
           {/* Categories */}
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4">
-            <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-              <Filter className="size-4 mr-2" />
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-4">
+            <h3 className="font-semibold text-white mb-4 flex items-center">
+              <Filter className="size-4 mr-2 text-amber-400" />
               Categories
             </h3>
             <div className="space-y-2">
               <button
                 onClick={() => setFilters({ ...filters, category: "" })}
                 className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
-                  filters.category === "" ? "bg-amber-100 text-amber-800" : "hover:bg-gray-100"
+                  filters.category === "" ? "bg-amber-700 text-amber-200" : "hover:bg-gray-700 text-gray-300"
                 }`}
               >
                 All Categories ({notes.length})
@@ -222,8 +222,8 @@ export default function StoryNotes() {
                     onClick={() => setFilters({ ...filters, category: category.key })}
                     className={`w-full text-left px-3 py-2 rounded-lg transition-colors flex items-center ${
                       filters.category === category.key
-                        ? `bg-${category.color}-100 text-${category.color}-800`
-                        : "hover:bg-gray-100"
+                        ? `bg-${category.color}-700 text-${category.color}-200`
+                        : "hover:bg-gray-700 text-gray-300"
                     }`}
                   >
                     <IconComponent className="size-4 mr-2" />
@@ -235,13 +235,13 @@ export default function StoryNotes() {
           </div>
 
           {/* Tags */}
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4">
-            <h3 className="font-semibold text-gray-900 mb-4">Popular Tags</h3>
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-4">
+            <h3 className="font-semibold text-white mb-4">Popular Tags</h3>
             <div className="flex flex-wrap gap-2">
               {allTags.slice(0, 10).map((tag) => (
                 <span
                   key={tag}
-                  className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs cursor-pointer hover:bg-gray-200"
+                  className="bg-gray-700 text-gray-200 px-2 py-1 rounded text-xs cursor-pointer hover:bg-gray-600 border border-gray-600"
                   onClick={() => setFilters({ ...filters, search: tag })}
                 >
                   {tag}
@@ -253,14 +253,14 @@ export default function StoryNotes() {
 
         {/* Notes List */}
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 max-h-[800px] overflow-y-auto">
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 max-h-[800px] overflow-y-auto">
             {filteredNotes.length === 0 ? (
-              <div className="p-8 text-center text-gray-500">
-                <BookOpen className="size-12 mx-auto mb-4 text-gray-300" />
+              <div className="p-8 text-center text-gray-400">
+                <BookOpen className="size-12 mx-auto mb-4 text-gray-500" />
                 <p>No notes match your filters</p>
               </div>
             ) : (
-              <div className="divide-y divide-gray-200">
+              <div className="divide-y divide-gray-700">
                 {filteredNotes.map((note) => {
                   const categoryInfo = getCategoryInfo(note.category);
                   const IconComponent = categoryInfo.icon;
@@ -268,34 +268,34 @@ export default function StoryNotes() {
                     <div
                       key={note.id}
                       onClick={() => setSelectedNote(note)}
-                      className={`p-4 cursor-pointer transition-colors hover:bg-amber-50 ${
-                        selectedNote?.id === note.id ? "bg-amber-100" : ""
+                      className={`p-4 cursor-pointer transition-colors hover:bg-gray-700/50 ${
+                        selectedNote?.id === note.id ? "bg-gray-700" : ""
                       }`}
                     >
                       <div className="flex items-start justify-between mb-2">
-                        <h3 className="font-semibold text-gray-900 flex items-center">
+                        <h3 className="font-semibold text-white flex items-center">
                           <IconComponent className="size-4 mr-2" />
                           {note.title}
                         </h3>
                         <span
-                          className={`text-xs px-2 py-1 rounded capitalize bg-${categoryInfo.color}-100 text-${categoryInfo.color}-800`}
+                          className={`text-xs px-2 py-1 rounded capitalize bg-${categoryInfo.color}-700 text-${categoryInfo.color}-200`}
                         >
                           {note.category}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600 line-clamp-2 mb-2">{note.content}</p>
+                      <p className="text-sm text-gray-300 line-clamp-2 mb-2">{note.content}</p>
                       <div className="flex items-center justify-between">
                         <div className="flex flex-wrap gap-1">
                           {note.tags.slice(0, 2).map((tag) => (
-                            <span key={tag} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                            <span key={tag} className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded border border-gray-600">
                               {tag}
                             </span>
                           ))}
                           {note.tags.length > 2 && (
-                            <span className="text-xs text-gray-500">+{note.tags.length - 2} more</span>
+                            <span className="text-xs text-gray-400">+{note.tags.length - 2} more</span>
                           )}
                         </div>
-                        <span className="text-xs text-gray-500">{new Date(note.updated).toLocaleDateString()}</span>
+                        <span className="text-xs text-gray-400">{new Date(note.updated).toLocaleDateString()}</span>
                       </div>
                     </div>
                   );
@@ -307,14 +307,14 @@ export default function StoryNotes() {
 
         {/* Note Detail */}
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6 sticky top-6">
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-6 sticky top-6">
             {selectedNote ? (
               <div>
                 {editingNote && editingNote.id === selectedNote.id ? (
                   // Edit Mode
                   <div className="space-y-4">
                     <div className="flex justify-between items-start mb-4">
-                      <h2 className="text-2xl font-bold text-gray-900">Edit Note</h2>
+                      <h2 className="text-2xl font-bold text-white">Edit Note</h2>
                       <div className="flex gap-2">
                         <button
                           onClick={handleSaveNote}
@@ -334,21 +334,21 @@ export default function StoryNotes() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Title</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Title</label>
                       <input
                         type="text"
                         value={editingNote.title}
                         onChange={(e) => setEditingNote({ ...editingNote, title: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500"
+                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 text-white"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Category</label>
                       <select
                         value={editingNote.category}
                         onChange={(e) => setEditingNote({ ...editingNote, category: e.target.value as any })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500"
+                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 text-white"
                       >
                         {categories.map((cat) => (
                           <option key={cat.key} value={cat.key}>
@@ -359,7 +359,7 @@ export default function StoryNotes() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Tags (comma separated)</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Tags (comma separated)</label>
                       <input
                         type="text"
                         value={editingNote.tags.join(", ")}
@@ -372,17 +372,17 @@ export default function StoryNotes() {
                               .filter((t) => t),
                           })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500"
+                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 text-white"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Content</label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Content</label>
                       <textarea
                         value={editingNote.content}
                         onChange={(e) => setEditingNote({ ...editingNote, content: e.target.value })}
                         rows={12}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500"
+                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 text-white"
                       />
                     </div>
                   </div>
@@ -391,7 +391,7 @@ export default function StoryNotes() {
                   <div>
                     <div className="flex justify-between items-start mb-4">
                       <div>
-                        <h2 className="text-2xl font-bold text-gray-900 flex items-center">
+                        <h2 className="text-2xl font-bold text-white flex items-center">
                           {(() => {
                             const categoryInfo = getCategoryInfo(selectedNote.category);
                             const IconComponent = categoryInfo.icon;
@@ -403,12 +403,12 @@ export default function StoryNotes() {
                           <span
                             className={`text-sm px-2 py-1 rounded capitalize ${(() => {
                               const categoryInfo = getCategoryInfo(selectedNote.category);
-                              return `bg-${categoryInfo.color}-100 text-${categoryInfo.color}-800`;
+                              return `bg-${categoryInfo.color}-700 text-${categoryInfo.color}-200`;
                             })()}`}
                           >
                             {selectedNote.category}
                           </span>
-                          <span className="text-sm text-gray-500">
+                          <span className="text-sm text-gray-400">
                             Updated: {new Date(selectedNote.updated).toLocaleDateString()}
                           </span>
                         </div>
@@ -416,13 +416,13 @@ export default function StoryNotes() {
                       <div className="flex gap-2">
                         <button
                           onClick={() => handleEditNote(selectedNote)}
-                          className="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg"
+                          className="p-2 text-gray-400 hover:text-gray-200 hover:bg-gray-700 rounded-lg"
                         >
                           <Edit3 className="size-4" />
                         </button>
                         <button
                           onClick={() => handleDeleteNote(selectedNote.id)}
-                          className="p-2 text-red-600 hover:text-red-800 hover:bg-red-100 rounded-lg"
+                          className="p-2 text-red-400 hover:text-red-300 hover:bg-red-900/50 rounded-lg"
                         >
                           <Trash2 className="size-4" />
                         </button>
@@ -432,7 +432,7 @@ export default function StoryNotes() {
                     <div className="mb-6">
                       <div className="flex flex-wrap gap-2">
                         {selectedNote.tags.map((tag) => (
-                          <span key={tag} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">
+                          <span key={tag} className="bg-blue-700 text-blue-200 px-2 py-1 rounded text-sm">
                             #{tag}
                           </span>
                         ))}
@@ -440,12 +440,12 @@ export default function StoryNotes() {
                     </div>
 
                     <div className="prose max-w-none">
-                      <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">{selectedNote.content}</p>
+                      <p className="text-gray-300 whitespace-pre-wrap leading-relaxed">{selectedNote.content}</p>
                     </div>
 
                     {selectedNote.linkedNotes.length > 0 && (
-                      <div className="mt-6 pt-6 border-t border-gray-200">
-                        <h3 className="font-semibold text-gray-900 mb-3">Linked Notes</h3>
+                      <div className="mt-6 pt-6 border-t border-gray-700">
+                        <h3 className="font-semibold text-white mb-3">Linked Notes</h3>
                         <div className="space-y-2">
                           {selectedNote.linkedNotes.map((linkedId) => {
                             const linkedNote = notes.find((n) => n.id === linkedId);
@@ -456,12 +456,11 @@ export default function StoryNotes() {
                               <button
                                 key={linkedId}
                                 onClick={() => setSelectedNote(linkedNote)}
-                                className="flex items-center p-2 w-full text-left bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
-                              >
+                                className="flex items-center p-2 w-full text-left bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
                                 <IconComponent className="size-4 mr-2" />
-                                <span className="font-medium">{linkedNote.title}</span>
+                                <span className="font-medium text-white">{linkedNote.title}</span>
                                 <span
-                                  className={`ml-auto text-xs px-2 py-1 rounded bg-${categoryInfo.color}-100 text-${categoryInfo.color}-800`}
+                                  className={`ml-auto text-xs px-2 py-1 rounded bg-${categoryInfo.color}-700 text-${categoryInfo.color}-200`}
                                 >
                                   {linkedNote.category}
                                 </span>
@@ -475,10 +474,10 @@ export default function StoryNotes() {
                 )}
               </div>
             ) : (
-              <div className="text-center text-gray-500 py-12">
-                <BookOpen className="size-16 mx-auto mb-4 text-gray-300" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">No Note Selected</h3>
-                <p className="text-gray-600">Select a note from the list to view its contents.</p>
+              <div className="text-center text-gray-400 py-12">
+                <BookOpen className="size-16 mx-auto mb-4 text-gray-500" />
+                <h3 className="text-xl font-semibold text-white mb-2">No Note Selected</h3>
+                <p className="text-gray-300">Select a note from the list to view its contents.</p>
               </div>
             )}
           </div>
