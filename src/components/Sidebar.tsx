@@ -70,7 +70,9 @@ export default function Sidebar({ currentPage, onNavigate, currentCampaign, onLo
   return (
     <div className="bg-gray-800 h-screen w-64 shadow-2xl flex flex-col border-r border-gray-700">
       <div className="p-6 border-b border-gray-700">
-        <h1 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 text-transparent bg-clip-text">DM Panel</h1>
+        <h1 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 text-transparent bg-clip-text">
+          DM Panel
+        </h1>
         {currentCampaign && (
           <div className="mt-2">
             <p className="text-sm text-gray-400">Current Campaign:</p>

@@ -310,9 +310,7 @@ export default function CombatTracker() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4 flex-1">
                         <div className="flex items-center space-x-3">
-                          <div className="text-2xl font-bold text-white w-8 text-center">
-                            {participant.initiative}
-                          </div>
+                          <div className="text-2xl font-bold text-white w-8 text-center">{participant.initiative}</div>
                           <div>
                             <div className="flex items-center space-x-2">
                               <h3 className="text-lg font-semibold text-white">{participant.name}</h3>
@@ -521,10 +519,7 @@ export default function CombatTracker() {
               </div>
             </div>
             <div className="flex justify-end space-x-3 mt-6">
-              <button
-                onClick={() => setShowAddParticipant(false)}
-                className="px-4 py-2 text-gray-300 hover:text-white"
-              >
+              <button onClick={() => setShowAddParticipant(false)} className="px-4 py-2 text-gray-300 hover:text-white">
                 Cancel
               </button>
               <button

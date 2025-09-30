@@ -1,6 +1,7 @@
-import { useState, useEffect, useMemo, useRef } from "react";
-import { Search, Filter, Skull, Shield, Heart, Zap, Eye, MessageSquare, ChevronDown, Languages } from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
+import { Search, Skull, Zap, Eye, MessageSquare, Languages } from "lucide-react";
 import type { MonsterData, MonsterFilters } from "@/types/data";
+import { FilterDropdown } from "@/components/ui/filter-dropdown";
 
 export default function MonstersDatabase() {
   const [monsters, setMonsters] = useState<MonsterData[]>([]);
@@ -12,30 +13,7 @@ export default function MonstersDatabase() {
     alignment: [],
   });
   const [isLoading, setIsLoading] = useState(true);
-  const [language, setLanguage] = useState<'en' | 'pl'>('en');
-  const [showSizeDropdown, setShowSizeDropdown] = useState(false);
-  const [showTypeDropdown, setShowTypeDropdown] = useState(false);
-  const [showAlignmentDropdown, setShowAlignmentDropdown] = useState(false);
-  const sizeDropdownRef = useRef<HTMLDivElement>(null);
-  const typeDropdownRef = useRef<HTMLDivElement>(null);
-  const alignmentDropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (sizeDropdownRef.current && !sizeDropdownRef.current.contains(event.target as Node)) {
-        setShowSizeDropdown(false);
-      }
-      if (typeDropdownRef.current && !typeDropdownRef.current.contains(event.target as Node)) {
-        setShowTypeDropdown(false);
-      }
-      if (alignmentDropdownRef.current && !alignmentDropdownRef.current.contains(event.target as Node)) {
-        setShowAlignmentDropdown(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const [language, setLanguage] = useState<"en" | "pl">("en");
 
   useEffect(() => {
     const loadMonsters = async () => {
@@ -137,128 +115,29 @@ export default function MonstersDatabase() {
 
           <div className="flex flex-wrap items-center gap-3 pt-3">
             {/* Modern Dropdown Filters */}
-            <div className="relative" ref={sizeDropdownRef}>
-              <button
-                onClick={() => setShowSizeDropdown(!showSizeDropdown)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
-                  filters.size && filters.size.length > 0
-                    ? "bg-red-900/30 text-red-300 border border-red-700/50"
-                    : "bg-gray-700 text-gray-300 border border-gray-600 hover:bg-gray-600"
-                }`}
-              >
-                <span className="text-xs">📏</span>
-                <span>
-                  {filters.size && filters.size.length > 0
-                    ? `Size (${filters.size.length})`
-                    : "Size"}
-                </span>
-                <ChevronDown className={`size-3 transition-transform duration-200 ${
-                  showSizeDropdown ? "rotate-180" : ""
-                }`} />
-              </button>
-              {showSizeDropdown && (
-                <div className="absolute top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-2xl z-50 backdrop-blur-none min-w-48 max-h-60 overflow-y-auto">
-                  {uniqueSizes.map((size) => (
-                    <label key={size} className="flex items-center px-3 py-2 hover:bg-gray-700 cursor-pointer text-sm text-gray-300">
-                      <input
-                        type="checkbox"
-                        checked={filters.size?.includes(size) || false}
-                        onChange={(e) => {
-                          const newSizes = e.target.checked
-                            ? [...(filters.size || []), size]
-                            : filters.size?.filter((s) => s !== size) || [];
-                          setFilters({ ...filters, size: newSizes });
-                        }}
-                        className="mr-2 rounded text-cyan-400 focus:ring-cyan-500 bg-gray-700 border-gray-600"
-                      />
-                      <span>{size}</span>
-                    </label>
-                  ))}
-                </div>
-              )}
-            </div>
+            <FilterDropdown
+              label="Size"
+              icon="📏"
+              options={uniqueSizes}
+              selectedValues={filters.size || []}
+              onSelectionChange={(values) => setFilters({ ...filters, size: values })}
+            />
 
-            <div className="relative" ref={typeDropdownRef}>
-              <button
-                onClick={() => setShowTypeDropdown(!showTypeDropdown)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
-                  filters.type && filters.type.length > 0
-                    ? "bg-red-900/30 text-red-300 border border-red-700/50"
-                    : "bg-gray-700 text-gray-300 border border-gray-600 hover:bg-gray-600"
-                }`}
-              >
-                <span className="text-xs">🐉</span>
-                <span>
-                  {filters.type && filters.type.length > 0
-                    ? `Type (${filters.type.length})`
-                    : "Type"}
-                </span>
-                <ChevronDown className={`size-3 transition-transform duration-200 ${
-                  showTypeDropdown ? "rotate-180" : ""
-                }`} />
-              </button>
-              {showTypeDropdown && (
-                <div className="absolute top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-2xl z-50 backdrop-blur-none min-w-48 max-h-60 overflow-y-auto">
-                  {uniqueTypes.map((type) => (
-                    <label key={type} className="flex items-center px-3 py-2 hover:bg-gray-700 cursor-pointer text-sm text-gray-300">
-                      <input
-                        type="checkbox"
-                        checked={filters.type?.includes(type) || false}
-                        onChange={(e) => {
-                          const newTypes = e.target.checked
-                            ? [...(filters.type || []), type]
-                            : filters.type?.filter((t) => t !== type) || [];
-                          setFilters({ ...filters, type: newTypes });
-                        }}
-                        className="mr-2 rounded text-cyan-400 focus:ring-cyan-500 bg-gray-700 border-gray-600"
-                      />
-                      <span>{type}</span>
-                    </label>
-                  ))}
-                </div>
-              )}
-            </div>
+            <FilterDropdown
+              label="Type"
+              icon="🐉"
+              options={uniqueTypes}
+              selectedValues={filters.type || []}
+              onSelectionChange={(values) => setFilters({ ...filters, type: values })}
+            />
 
-            <div className="relative" ref={alignmentDropdownRef}>
-              <button
-                onClick={() => setShowAlignmentDropdown(!showAlignmentDropdown)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
-                  filters.alignment && filters.alignment.length > 0
-                    ? "bg-red-900/30 text-red-300 border border-red-700/50"
-                    : "bg-gray-700 text-gray-300 border border-gray-600 hover:bg-gray-600"
-                }`}
-              >
-                <span className="text-xs">⚖️</span>
-                <span>
-                  {filters.alignment && filters.alignment.length > 0
-                    ? `Alignment (${filters.alignment.length})`
-                    : "Alignment"}
-                </span>
-                <ChevronDown className={`size-3 transition-transform duration-200 ${
-                  showAlignmentDropdown ? "rotate-180" : ""
-                }`} />
-              </button>
-              {showAlignmentDropdown && (
-                <div className="absolute top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-2xl z-50 backdrop-blur-none min-w-48 max-h-60 overflow-y-auto">
-                  {uniqueAlignments.map((alignment) => (
-                    <label key={alignment} className="flex items-center px-3 py-2 hover:bg-gray-700 cursor-pointer text-sm text-gray-300">
-                      <input
-                        type="checkbox"
-                        checked={filters.alignment?.includes(alignment) || false}
-                        onChange={(e) => {
-                          const newAlignments = e.target.checked
-                            ? [...(filters.alignment || []), alignment]
-                            : filters.alignment?.filter((a) => a !== alignment) || [];
-                          setFilters({ ...filters, alignment: newAlignments });
-                        }}
-                        className="mr-2 rounded text-cyan-400 focus:ring-cyan-500 bg-gray-700 border-gray-600"
-                      />
-                      <span>{alignment}</span>
-                    </label>
-                  ))}
-                </div>
-              )}
-            </div>
+            <FilterDropdown
+              label="Alignment"
+              icon="⚖️"
+              options={uniqueAlignments}
+              selectedValues={filters.alignment || []}
+              onSelectionChange={(values) => setFilters({ ...filters, alignment: values })}
+            />
 
             <button
               onClick={() => setFilters({ search: "" })}
@@ -273,21 +152,17 @@ export default function MonstersDatabase() {
               <Languages className="size-4 text-gray-400" />
               <span className="text-sm text-gray-400">Names:</span>
               <button
-                onClick={() => setLanguage('en')}
+                onClick={() => setLanguage("en")}
                 className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
-                  language === 'en'
-                    ? 'text-purple-500'
-                    : 'text-gray-300 hover:text-white'
+                  language === "en" ? "text-purple-500" : "text-gray-300 hover:text-white"
                 }`}
               >
                 EN
               </button>
               <button
-                onClick={() => setLanguage('pl')}
+                onClick={() => setLanguage("pl")}
                 className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
-                  language === 'pl'
-                    ? 'text-purple-500'
-                    : 'text-gray-300 hover:text-white'
+                  language === "pl" ? "text-purple-500" : "text-gray-300 hover:text-white"
                 }`}
               >
                 PL
@@ -296,7 +171,9 @@ export default function MonstersDatabase() {
           </div>
 
           {/* Active Filters Display */}
-          {((filters.size && filters.size.length > 0) || (filters.type && filters.type.length > 0) || (filters.alignment && filters.alignment.length > 0)) && (
+          {((filters.size && filters.size.length > 0) ||
+            (filters.type && filters.type.length > 0) ||
+            (filters.alignment && filters.alignment.length > 0)) && (
             <div className="border-t border-gray-700 pt-3 mt-3">
               <div className="flex flex-wrap gap-2">
                 {filters.size?.map((size) => (
@@ -357,7 +234,6 @@ export default function MonstersDatabase() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
-
         {/* Monsters List */}
         <div className="lg:col-span-3">
           <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 max-h-[800px] overflow-y-auto">
@@ -378,7 +254,9 @@ export default function MonstersDatabase() {
                   >
                     <div className="flex items-start justify-between mb-2">
                       <h3 className="font-semibold text-white">{monster.name[language]}</h3>
-                      <span className="text-xs bg-red-900/30 text-red-300 px-2 py-1 rounded border border-red-700/50">{monster.size}</span>
+                      <span className="text-xs bg-red-900/30 text-red-300 px-2 py-1 rounded border border-red-700/50">
+                        {monster.size}
+                      </span>
                     </div>
                     <div className="text-sm text-gray-300 mb-2">
                       <span className="font-medium">{monster.type}</span>

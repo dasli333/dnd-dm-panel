@@ -43,7 +43,9 @@ export default function LoginForm() {
           <div className="bg-gradient-to-r from-cyan-500 to-blue-500 size-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
             <LogIn className="size-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-transparent bg-clip-text drop-shadow-lg mb-2">Dungeon Master Panel</h1>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-transparent bg-clip-text drop-shadow-lg mb-2">
+            Dungeon Master Panel
+          </h1>
           <p className="text-gray-300">Sign in to manage your campaigns</p>
         </div>
 

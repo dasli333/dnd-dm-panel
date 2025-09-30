@@ -287,7 +287,10 @@ export default function StoryNotes() {
                       <div className="flex items-center justify-between">
                         <div className="flex flex-wrap gap-1">
                           {note.tags.slice(0, 2).map((tag) => (
-                            <span key={tag} className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded border border-gray-600">
+                            <span
+                              key={tag}
+                              className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded border border-gray-600"
+                            >
                               {tag}
                             </span>
                           ))}
@@ -456,7 +459,8 @@ export default function StoryNotes() {
                               <button
                                 key={linkedId}
                                 onClick={() => setSelectedNote(linkedNote)}
-                                className="flex items-center p-2 w-full text-left bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
+                                className="flex items-center p-2 w-full text-left bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+                              >
                                 <IconComponent className="size-4 mr-2" />
                                 <span className="font-medium text-white">{linkedNote.title}</span>
                                 <span

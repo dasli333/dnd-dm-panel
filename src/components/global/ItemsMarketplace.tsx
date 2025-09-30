@@ -471,7 +471,10 @@ export default function ItemsMarketplace() {
                     <strong className="text-white block mb-2">Properties:</strong>
                     <div className="flex flex-wrap gap-1">
                       {selectedItem.properties.map((property, index) => (
-                        <span key={index} className="bg-gray-700 text-gray-200 px-2 py-1 rounded text-xs border border-gray-600">
+                        <span
+                          key={index}
+                          className="bg-gray-700 text-gray-200 px-2 py-1 rounded text-xs border border-gray-600"
+                        >
                           {property}
                         </span>
                       ))}

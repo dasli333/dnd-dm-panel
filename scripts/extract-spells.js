@@ -14,7 +14,7 @@ function loadSpellTranslations() {
 
     // Create a map for quick lookup
     const translationMap = new Map();
-    translations.forEach(translation => {
+    translations.forEach((translation) => {
       translationMap.set(translation.english, translation.polish);
     });
 
@@ -355,7 +355,7 @@ function extractSpells() {
 
           finishedSpell.name = {
             en: englishName,
-            pl: polishName
+            pl: polishName,
           };
 
           spells.push(finishedSpell);
@@ -462,7 +462,7 @@ function extractSpells() {
 
       finishedSpell.name = {
         en: englishName,
-        pl: polishName
+        pl: polishName,
       };
 
       spells.push(finishedSpell);
@@ -499,7 +499,9 @@ function extractSpells() {
     // Show first few spell names for verification
     console.log(`\nFirst 10 spells extracted:`);
     spells.slice(0, 10).forEach((spell, idx) => {
-      console.log(`${idx + 1}. ${spell.name.en} / ${spell.name.pl} (${spell.isCantrip ? "Cantrip" : `Level ${spell.level}`})`);
+      console.log(
+        `${idx + 1}. ${spell.name.en} / ${spell.name.pl} (${spell.isCantrip ? "Cantrip" : `Level ${spell.level}`})`
+      );
     });
   } catch (error) {
     console.error("Error extracting spells:", error);

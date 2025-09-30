@@ -1,6 +1,7 @@
-import { useState, useEffect, useMemo, useRef } from "react";
-import { Search, Filter, Book, Clock, Target, Zap, Sparkles, ChevronDown, Languages } from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
+import { Search, Filter, Book, Clock, Target, Zap, Sparkles, Languages } from "lucide-react";
 import type { SpellData, SpellFilters } from "@/types/data";
+import { FilterDropdown } from "@/components/ui/filter-dropdown";
 
 export default function SpellsDatabase() {
   const [spells, setSpells] = useState<SpellData[]>([]);
@@ -14,25 +15,7 @@ export default function SpellsDatabase() {
     ritual: undefined,
   });
   const [isLoading, setIsLoading] = useState(true);
-  const [language, setLanguage] = useState<'en' | 'pl'>('en');
-  const [showSchoolDropdown, setShowSchoolDropdown] = useState(false);
-  const [showClassDropdown, setShowClassDropdown] = useState(false);
-  const schoolDropdownRef = useRef<HTMLDivElement>(null);
-  const classDropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (schoolDropdownRef.current && !schoolDropdownRef.current.contains(event.target as Node)) {
-        setShowSchoolDropdown(false);
-      }
-      if (classDropdownRef.current && !classDropdownRef.current.contains(event.target as Node)) {
-        setShowClassDropdown(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const [language, setLanguage] = useState<"en" | "pl">("en");
 
   useEffect(() => {
     const loadSpells = async () => {
@@ -187,82 +170,21 @@ export default function SpellsDatabase() {
 
           <div className="flex flex-wrap items-center gap-3 pt-3">
             {/* Modern Dropdown Filters */}
-            <div className="relative" ref={schoolDropdownRef}>
-              <button
-                onClick={() => setShowSchoolDropdown(!showSchoolDropdown)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
-                  filters.school?.length
-                    ? "bg-purple-900/30 text-purple-300 border border-purple-700/50"
-                    : "bg-gray-700 text-gray-300 border border-gray-600 hover:bg-gray-600"
-                }`}
-              >
-                <span className="text-xs">🎓</span>
-                <span>{filters.school?.length ? `School (${filters.school.length})` : "School"}</span>
-                <ChevronDown
-                  className={`size-3 transition-transform duration-200 ${showSchoolDropdown ? "rotate-180" : ""}`}
-                />
-              </button>
-              {showSchoolDropdown && (
-                <div className="absolute top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-2xl z-50 backdrop-blur-none min-w-48 max-h-60 overflow-y-auto">
-                  {uniqueSchools.map((school) => (
-                    <label
-                      key={school}
-                      className="flex items-center px-3 py-2 hover:bg-gray-700 cursor-pointer text-sm text-gray-300"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={filters.school?.includes(school) || false}
-                        onChange={(e) => {
-                          const newSchools = e.target.checked
-                            ? [...(filters.school || []), school]
-                            : filters.school?.filter((s) => s !== school) || [];
-                          setFilters({ ...filters, school: newSchools });
-                        }}
-                        className="mr-2 rounded text-purple-400 focus:ring-purple-500 bg-gray-700 border-gray-600"
-                      />
-                      <span>{school}</span>
-                    </label>
-                  ))}
-                </div>
-              )}
-            </div>
+            <FilterDropdown
+              label="School"
+              icon="🎓"
+              options={uniqueSchools}
+              selectedValues={filters.school || []}
+              onSelectionChange={(values) => setFilters({ ...filters, school: values })}
+            />
 
-            <div className="relative" ref={classDropdownRef}>
-              <button
-                onClick={() => setShowClassDropdown(!showClassDropdown)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
-                  filters.classes?.length
-                    ? "bg-purple-900/30 text-purple-300 border border-purple-700/50"
-                    : "bg-gray-700 text-gray-300 border border-gray-600 hover:bg-gray-600"
-                }`}
-              >
-                <span className="text-xs">⚔️</span>
-                <span>{filters.classes?.length ? `Class (${filters.classes.length})` : "Class"}</span>
-                <ChevronDown
-                  className={`size-3 transition-transform duration-200 ${showClassDropdown ? "rotate-180" : ""}`}
-                />
-              </button>
-              {showClassDropdown && (
-                <div className="absolute top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-2xl z-50 backdrop-blur-none min-w-48 max-h-60 overflow-y-auto">
-                  {uniqueClasses.map((cls) => (
-                    <label key={cls} className="flex items-center px-3 py-2 hover:bg-purple-50 cursor-pointer text-sm">
-                      <input
-                        type="checkbox"
-                        checked={filters.classes?.includes(cls) || false}
-                        onChange={(e) => {
-                          const newClasses = e.target.checked
-                            ? [...(filters.classes || []), cls]
-                            : filters.classes?.filter((c) => c !== cls) || [];
-                          setFilters({ ...filters, classes: newClasses });
-                        }}
-                        className="mr-2 rounded text-purple-400 focus:ring-purple-500 bg-gray-700 border-gray-600"
-                      />
-                      <span>{cls}</span>
-                    </label>
-                  ))}
-                </div>
-              )}
-            </div>
+            <FilterDropdown
+              label="Class"
+              icon="⚔️"
+              options={uniqueClasses}
+              selectedValues={filters.classes || []}
+              onSelectionChange={(values) => setFilters({ ...filters, classes: values })}
+            />
 
             {/* Modern Toggle Filters */}
             <div className="flex items-center gap-2">
@@ -312,21 +234,17 @@ export default function SpellsDatabase() {
                 <Languages className="size-4 text-gray-400" />
                 <span className="text-sm text-gray-400">Names:</span>
                 <button
-                  onClick={() => setLanguage('en')}
+                  onClick={() => setLanguage("en")}
                   className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
-                    language === 'en'
-                      ? 'text-purple-500'
-                      : 'text-gray-300 hover:text-white'
+                    language === "en" ? "text-purple-500" : "text-gray-300 hover:text-white"
                   }`}
                 >
                   EN
                 </button>
                 <button
-                  onClick={() => setLanguage('pl')}
+                  onClick={() => setLanguage("pl")}
                   className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
-                    language === 'pl'
-                      ? 'text-purple-500'
-                      : 'text-gray-300 hover:text-white'
+                    language === "pl" ? "text-purple-500" : "text-gray-300 hover:text-white"
                   }`}
                 >
                   PL
@@ -529,7 +447,10 @@ export default function SpellsDatabase() {
                   </div>
                   <div className="flex flex-wrap gap-1">
                     {selectedSpell.classes.map((cls) => (
-                      <span key={cls} className="bg-gray-700 text-gray-300 px-2 py-1 rounded text-xs border border-gray-600">
+                      <span
+                        key={cls}
+                        className="bg-gray-700 text-gray-300 px-2 py-1 rounded text-xs border border-gray-600"
+                      >
                         {cls}
                       </span>
                     ))}

@@ -10,7 +10,7 @@ function loadCreatureTranslations() {
 
     // Create a map for quick lookup
     const translationMap = new Map();
-    translations.forEach(translation => {
+    translations.forEach((translation) => {
       translationMap.set(translation.english, translation.polish);
     });
 
@@ -781,7 +781,7 @@ function extractMonstersWithLegendaryActions() {
 
           monster.name = {
             en: englishName,
-            pl: polishName
+            pl: polishName,
           };
 
           monsters.push(monster);

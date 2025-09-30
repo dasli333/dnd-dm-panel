@@ -409,7 +409,10 @@ export default function CharacterSheets() {
                         {Object.entries(selectedCharacter.skills)
                           .filter(([, proficient]) => proficient)
                           .map(([skill]) => (
-                            <span key={skill} className="bg-blue-700 text-blue-200 px-3 py-1 rounded-full text-sm border border-blue-600">
+                            <span
+                              key={skill}
+                              className="bg-blue-700 text-blue-200 px-3 py-1 rounded-full text-sm border border-blue-600"
+                            >
                               {skill}
                             </span>
                           ))}
@@ -421,7 +424,10 @@ export default function CharacterSheets() {
                       <h3 className="font-semibold text-white mb-3">Equipment</h3>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                         {selectedCharacter.equipment.map((item, index) => (
-                          <div key={index} className="bg-gray-700 text-gray-300 px-3 py-2 rounded text-sm border border-gray-600">
+                          <div
+                            key={index}
+                            className="bg-gray-700 text-gray-300 px-3 py-2 rounded text-sm border border-gray-600"
+                          >
                             {item}
                           </div>
                         ))}
@@ -434,7 +440,10 @@ export default function CharacterSheets() {
                         <h3 className="font-semibold text-white mb-3">Known Spells</h3>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                           {selectedCharacter.spells.map((spell, index) => (
-                            <div key={index} className="bg-purple-700 text-purple-200 px-3 py-2 rounded text-sm border border-purple-600">
+                            <div
+                              key={index}
+                              className="bg-purple-700 text-purple-200 px-3 py-2 rounded text-sm border border-purple-600"
+                            >
                               {spell}
                             </div>
                           ))}
