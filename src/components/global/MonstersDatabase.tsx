@@ -1,7 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
-import { Search, Skull, Zap, Eye, MessageSquare, Languages } from "lucide-react";
+import { Search, Skull, Zap, Eye, MessageSquare } from "lucide-react";
 import type { MonsterData, MonsterFilters } from "@/types/data";
 import { FilterDropdown } from "@/components/ui/filter-dropdown";
+import { LanguageSwitch } from "@/components/ui/language-switch";
+import type { Language } from "@/components/ui/language-switch";
 
 export default function MonstersDatabase() {
   const [monsters, setMonsters] = useState<MonsterData[]>([]);
@@ -13,7 +15,7 @@ export default function MonstersDatabase() {
     alignment: [],
   });
   const [isLoading, setIsLoading] = useState(true);
-  const [language, setLanguage] = useState<"en" | "pl">("en");
+  const [language, setLanguage] = useState<Language>("en");
 
   useEffect(() => {
     const loadMonsters = async () => {
@@ -147,27 +149,7 @@ export default function MonstersDatabase() {
               <span>Clear</span>
             </button>
 
-            {/* Language Switch */}
-            <div className="flex items-center gap-2 bg-gray-700 rounded-lg px-3 py-1 border border-gray-600">
-              <Languages className="size-4 text-gray-400" />
-              <span className="text-sm text-gray-400">Names:</span>
-              <button
-                onClick={() => setLanguage("en")}
-                className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
-                  language === "en" ? "text-purple-500" : "text-gray-300 hover:text-white"
-                }`}
-              >
-                EN
-              </button>
-              <button
-                onClick={() => setLanguage("pl")}
-                className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
-                  language === "pl" ? "text-purple-500" : "text-gray-300 hover:text-white"
-                }`}
-              >
-                PL
-              </button>
-            </div>
+            <LanguageSwitch language={language} onLanguageChange={setLanguage} />
           </div>
 
           {/* Active Filters Display */}

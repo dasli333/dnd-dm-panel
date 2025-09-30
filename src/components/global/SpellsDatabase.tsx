@@ -1,7 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
-import { Search, Filter, Book, Clock, Target, Zap, Sparkles, Languages } from "lucide-react";
+import { Search, Book, Clock, Target, Zap, Sparkles } from "lucide-react";
 import type { SpellData, SpellFilters } from "@/types/data";
 import { FilterDropdown } from "@/components/ui/filter-dropdown";
+import { LanguageSwitch } from "@/components/ui/language-switch";
+import type { Language } from "@/components/ui/language-switch";
 
 export default function SpellsDatabase() {
   const [spells, setSpells] = useState<SpellData[]>([]);
@@ -15,7 +17,7 @@ export default function SpellsDatabase() {
     ritual: undefined,
   });
   const [isLoading, setIsLoading] = useState(true);
-  const [language, setLanguage] = useState<"en" | "pl">("en");
+  const [language, setLanguage] = useState<Language>("en");
 
   useEffect(() => {
     const loadSpells = async () => {
@@ -229,27 +231,7 @@ export default function SpellsDatabase() {
                 <span>Clear</span>
               </button>
 
-              {/* Language Switch */}
-              <div className="flex items-center gap-2 bg-gray-700 rounded-lg px-3 py-1 border border-gray-600">
-                <Languages className="size-4 text-gray-400" />
-                <span className="text-sm text-gray-400">Names:</span>
-                <button
-                  onClick={() => setLanguage("en")}
-                  className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
-                    language === "en" ? "text-purple-500" : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  EN
-                </button>
-                <button
-                  onClick={() => setLanguage("pl")}
-                  className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
-                    language === "pl" ? "text-purple-500" : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  PL
-                </button>
-              </div>
+              <LanguageSwitch language={language} onLanguageChange={setLanguage} />
             </div>
           </div>
 
