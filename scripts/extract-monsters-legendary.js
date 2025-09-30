@@ -1,6 +1,26 @@
 import fs from "fs";
 import path from "path";
 
+// Load creature name translations
+function loadCreatureTranslations() {
+  try {
+    const translationsPath = path.join(process.cwd(), "data", "creature-names.json");
+    const translationsData = fs.readFileSync(translationsPath, "utf8");
+    const translations = JSON.parse(translationsData);
+
+    // Create a map for quick lookup
+    const translationMap = new Map();
+    translations.forEach(translation => {
+      translationMap.set(translation.english, translation.polish);
+    });
+
+    return translationMap;
+  } catch (error) {
+    console.warn("Could not load creature translations:", error.message);
+    return new Map();
+  }
+}
+
 // Enhanced parsing functions
 function parseAbilityScoresFromLines(line1, line2) {
   const abilities = {};
@@ -698,6 +718,9 @@ function extractMonstersWithLegendaryActions() {
   try {
     console.log("Starting monster extraction with category and ### markers...");
 
+    // Load translations
+    const creatureTranslations = loadCreatureTranslations();
+
     const monstersPath = path.join(process.cwd(), "data", "monsters.txt");
     const monstersText = fs.readFileSync(monstersPath, "utf-8");
 
@@ -751,6 +774,16 @@ function extractMonstersWithLegendaryActions() {
         const monster = parseMonsterEntry(entry.text);
         if (monster && monster.name && monster.name.length > 2) {
           monster.category = entry.category;
+
+          // Add translations to the monster
+          const englishName = monster.name;
+          const polishName = creatureTranslations.get(englishName) || englishName;
+
+          monster.name = {
+            en: englishName,
+            pl: polishName
+          };
+
           monsters.push(monster);
         } else {
           console.log(`Failed to parse monster ${index}: ${entry.text.split("\n")[0]}`);
@@ -783,7 +816,7 @@ function extractMonstersWithLegendaryActions() {
     console.log(`Monsters with legendary actions: ${monstersWithLegendary.length}`);
 
     monstersWithLegendary.slice(0, 3).forEach((m, i) => {
-      console.log(`${i + 1}. ${m.name}:`);
+      console.log(`${i + 1}. ${m.name.en} / ${m.name.pl}:`);
       console.log(`   Usage: "${m.legendaryActions.usageDescription?.substring(0, 80)}..."`);
       console.log(
         `   Uses: ${m.legendaryActions.uses}${m.legendaryActions.usesInLair ? ` (${m.legendaryActions.usesInLair} in lair)` : ""}`

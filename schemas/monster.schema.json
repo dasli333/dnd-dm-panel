@@ -5,8 +5,20 @@
   "type": "object",
   "properties": {
     "name": {
-      "type": "string",
-      "description": "The monster's name"
+      "type": "object",
+      "description": "The monster's name in multiple languages",
+      "properties": {
+        "en": {
+          "type": "string",
+          "description": "English name"
+        },
+        "pl": {
+          "type": "string",
+          "description": "Polish name"
+        }
+      },
+      "required": ["en", "pl"],
+      "additionalProperties": false
     },
     "size": {
       "type": "string"

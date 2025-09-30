@@ -5,6 +5,26 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Load spell name translations
+function loadSpellTranslations() {
+  try {
+    const translationsPath = path.join(__dirname, "../data", "spell-names.json");
+    const translationsData = fs.readFileSync(translationsPath, "utf8");
+    const translations = JSON.parse(translationsData);
+
+    // Create a map for quick lookup
+    const translationMap = new Map();
+    translations.forEach(translation => {
+      translationMap.set(translation.english, translation.polish);
+    });
+
+    return translationMap;
+  } catch (error) {
+    console.warn("Could not load spell translations:", error.message);
+    return new Map();
+  }
+}
+
 // Helper function to parse damage formulas
 function parseDamageFormula(text) {
   // Match patterns like "4d4 Acid damage", "2d6 + 3 Fire damage"
@@ -301,6 +321,9 @@ function extractSpells() {
   const inputFile = path.join(__dirname, "../data", "spells.txt");
   const outputFile = path.join(__dirname, "../data", "spells.json");
 
+  // Load translations
+  const spellTranslations = loadSpellTranslations();
+
   try {
     const content = fs.readFileSync(inputFile, "utf8");
     const lines = content.split("\n");
@@ -326,6 +349,15 @@ function extractSpells() {
         // Save previous spell if exists
         const finishedSpell = finalizeSpell(currentSpell, descriptionLines);
         if (finishedSpell) {
+          // Add translations to the spell
+          const englishName = finishedSpell.name;
+          const polishName = spellTranslations.get(englishName) || englishName;
+
+          finishedSpell.name = {
+            en: englishName,
+            pl: polishName
+          };
+
           spells.push(finishedSpell);
         }
 
@@ -424,6 +456,15 @@ function extractSpells() {
     // Don't forget the last spell
     const finishedSpell = finalizeSpell(currentSpell, descriptionLines);
     if (finishedSpell) {
+      // Add translations to the spell
+      const englishName = finishedSpell.name;
+      const polishName = spellTranslations.get(englishName) || englishName;
+
+      finishedSpell.name = {
+        en: englishName,
+        pl: polishName
+      };
+
       spells.push(finishedSpell);
     }
 
@@ -458,7 +499,7 @@ function extractSpells() {
     // Show first few spell names for verification
     console.log(`\nFirst 10 spells extracted:`);
     spells.slice(0, 10).forEach((spell, idx) => {
-      console.log(`${idx + 1}. ${spell.name} (${spell.isCantrip ? "Cantrip" : `Level ${spell.level}`})`);
+      console.log(`${idx + 1}. ${spell.name.en} / ${spell.name.pl} (${spell.isCantrip ? "Cantrip" : `Level ${spell.level}`})`);
     });
   } catch (error) {
     console.error("Error extracting spells:", error);

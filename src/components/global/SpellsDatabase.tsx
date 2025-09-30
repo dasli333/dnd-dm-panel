@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from "react";
-import { Search, Filter, Book, Clock, Target, Zap, Sparkles, ChevronDown } from "lucide-react";
+import { Search, Filter, Book, Clock, Target, Zap, Sparkles, ChevronDown, Languages } from "lucide-react";
 import type { SpellData, SpellFilters } from "@/types/data";
 
 export default function SpellsDatabase() {
@@ -14,6 +14,7 @@ export default function SpellsDatabase() {
     ritual: undefined,
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [language, setLanguage] = useState<'en' | 'pl'>('en');
   const [showSchoolDropdown, setShowSchoolDropdown] = useState(false);
   const [showClassDropdown, setShowClassDropdown] = useState(false);
   const schoolDropdownRef = useRef<HTMLDivElement>(null);
@@ -53,7 +54,8 @@ export default function SpellsDatabase() {
     return spells.filter((spell) => {
       if (
         filters.search &&
-        !spell.name.toLowerCase().includes(filters.search.toLowerCase()) &&
+        !spell.name.en.toLowerCase().includes(filters.search.toLowerCase()) &&
+        !spell.name.pl.toLowerCase().includes(filters.search.toLowerCase()) &&
         !spell.description.toLowerCase().includes(filters.search.toLowerCase())
       ) {
         return false;
@@ -304,6 +306,32 @@ export default function SpellsDatabase() {
                 <span className="text-xs">🗑️</span>
                 <span>Clear</span>
               </button>
+
+              {/* Language Switch */}
+              <div className="flex items-center gap-2 bg-gray-700 rounded-lg px-3 py-1 border border-gray-600">
+                <Languages className="size-4 text-gray-400" />
+                <span className="text-sm text-gray-400">Names:</span>
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
+                    language === 'en'
+                      ? 'text-purple-500'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => setLanguage('pl')}
+                  className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
+                    language === 'pl'
+                      ? 'text-purple-500'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  PL
+                </button>
+              </div>
             </div>
           </div>
 
@@ -414,7 +442,7 @@ export default function SpellsDatabase() {
                     }`}
                   >
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-semibold text-white">{spell.name}</h3>
+                      <h3 className="font-semibold text-white">{spell.name[language]}</h3>
                       <span className="text-xs bg-purple-900/30 text-purple-300 px-2 py-1 rounded border border-purple-700/50">
                         {getSpellLevelDisplay(spell.level, spell.isCantrip)}
                       </span>
@@ -439,7 +467,7 @@ export default function SpellsDatabase() {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Sparkles className="size-6 text-purple-400" />
-                  <h2 className="text-2xl font-bold text-white">{selectedSpell.name}</h2>
+                  <h2 className="text-2xl font-bold text-white">{selectedSpell.name[language]}</h2>
                 </div>
 
                 <div className="mb-4">
