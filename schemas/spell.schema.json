@@ -28,7 +28,16 @@
     },
     "school": {
       "type": "string",
-      "enum": ["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"],
+      "enum": [
+        "Abjuration",
+        "Conjuration",
+        "Divination",
+        "Enchantment",
+        "Evocation",
+        "Illusion",
+        "Necromancy",
+        "Transmutation"
+      ],
       "description": "The school of magic"
     },
     "isCantrip": {
@@ -150,9 +159,19 @@
           "damageType": {
             "type": "string",
             "enum": [
-              "Acid", "Bludgeoning", "Cold", "Fire", "Force", "Lightning",
-              "Necrotic", "Piercing", "Poison", "Psychic", "Radiant",
-              "Slashing", "Thunder"
+              "Acid",
+              "Bludgeoning",
+              "Cold",
+              "Fire",
+              "Force",
+              "Lightning",
+              "Necrotic",
+              "Piercing",
+              "Poison",
+              "Psychic",
+              "Radiant",
+              "Slashing",
+              "Thunder"
             ],
             "description": "Type of damage dealt"
           },
@@ -210,9 +229,20 @@
           "name": {
             "type": "string",
             "enum": [
-              "Blinded", "Charmed", "Deafened", "Frightened", "Grappled",
-              "Incapacitated", "Invisible", "Paralyzed", "Petrified",
-              "Poisoned", "Prone", "Restrained", "Stunned", "Unconscious"
+              "Blinded",
+              "Charmed",
+              "Deafened",
+              "Frightened",
+              "Grappled",
+              "Incapacitated",
+              "Invisible",
+              "Paralyzed",
+              "Petrified",
+              "Poisoned",
+              "Prone",
+              "Restrained",
+              "Stunned",
+              "Unconscious"
             ],
             "description": "Condition inflicted by the spell"
           },

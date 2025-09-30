@@ -1,0 +1,1358 @@
+[
+  {
+    "english": "Acid Arrow",
+    "polish": "Kwasowa strzała"
+  },
+  {
+    "english": "Acid Splash",
+    "polish": "Kwasowy rozprysk"
+  },
+  {
+    "english": "Aid",
+    "polish": "Pomoc"
+  },
+  {
+    "english": "Alarm",
+    "polish": "Alarm"
+  },
+  {
+    "english": "Alter Self",
+    "polish": "Zmiana siebie"
+  },
+  {
+    "english": "Animal Friendship",
+    "polish": "Przyjaciel zwierząt"
+  },
+  {
+    "english": "Animal Messenger",
+    "polish": "Zwierzęcy posłaniec"
+  },
+  {
+    "english": "Animal Shapes",
+    "polish": "Zwierzęce kształty"
+  },
+  {
+    "english": "Animate Dead",
+    "polish": "Animowanie zmarłego"
+  },
+  {
+    "english": "Animate Objects",
+    "polish": "Animowanie obiektów"
+  },
+  {
+    "english": "Antimagic Field",
+    "polish": "Pole antymagii"
+  },
+  {
+    "english": "Antipathy/Sympathy",
+    "polish": "Antypatia/Sympatia"
+  },
+  {
+    "english": "Antilife Shell",
+    "polish": "Bariera przeciw życiu"
+  },
+  {
+    "english": "Arcane Eye",
+    "polish": "Magiczne oko"
+  },
+  {
+    "english": "Arcane Hand",
+    "polish": "Dłoń Bigby'ego"
+  },
+  {
+    "english": "Arcane Lock",
+    "polish": "Magiczny zamek"
+  },
+  {
+    "english": "Arcane Sword",
+    "polish": "Miecz Mordenkainena"
+  },
+  {
+    "english": "Arcanist's Magic Aura",
+    "polish": "Magiczna aura"
+  },
+  {
+    "english": "Astral Projection",
+    "polish": "Projekcja astralna"
+  },
+  {
+    "english": "Augury",
+    "polish": "Wróżba"
+  },
+  {
+    "english": "Aura of Life",
+    "polish": "Aura życia"
+  },
+  {
+    "english": "Awaken",
+    "polish": "Przebudzenie"
+  },
+  {
+    "english": "Bane",
+    "polish": "Zguba"
+  },
+  {
+    "english": "Banishment",
+    "polish": "Wypędzenie"
+  },
+  {
+    "english": "Barkskin",
+    "polish": "Korowa skóra"
+  },
+  {
+    "english": "Beacon of Hope",
+    "polish": "Promień nadziei"
+  },
+  {
+    "english": "Befuddlement",
+    "polish": "Osłabienie umysłu"
+  },
+  {
+    "english": "Bestow Curse",
+    "polish": "Nałożenie klątwy"
+  },
+  {
+    "english": "Black Tentacles",
+    "polish": "Czarne macki"
+  },
+  {
+    "english": "Blade Barrier",
+    "polish": "Bariera ostrzy"
+  },
+  {
+    "english": "Bless",
+    "polish": "Błogosławieństwo"
+  },
+  {
+    "english": "Blight",
+    "polish": "Plaga"
+  },
+  {
+    "english": "Blindness/Deafness",
+    "polish": "Ślepota/Głuchota"
+  },
+  {
+    "english": "Blink",
+    "polish": "Mignięcie"
+  },
+  {
+    "english": "Blur",
+    "polish": "Rozmycie"
+  },
+  {
+    "english": "Burning Hands",
+    "polish": "Płonące dłonie"
+  },
+  {
+    "english": "Call Lightning",
+    "polish": "Wezwanie błyskawicy"
+  },
+  {
+    "english": "Calm Emotions",
+    "polish": "Wyciszenie emocji"
+  },
+  {
+    "english": "Chain Lightning",
+    "polish": "Łańcuch błyskawic"
+  },
+  {
+    "english": "Charm Monster",
+    "polish": "Urzeczenie potwora"
+  },
+  {
+    "english": "Charm Person",
+    "polish": "Zauroczenie osoby"
+  },
+  {
+    "english": "Chill Touch",
+    "polish": "Przeszywający dotyk"
+  },
+  {
+    "english": "Chromatic Orb",
+    "polish": "Barwna kula"
+  },
+  {
+    "english": "Circle of Death",
+    "polish": "Krąg śmierci"
+  },
+  {
+    "english": "Clairvoyance",
+    "polish": "Jasnowidzenie"
+  },
+  {
+    "english": "Clone",
+    "polish": "Klon"
+  },
+  {
+    "english": "Cloudkill",
+    "polish": "Zabójcza chmura"
+  },
+  {
+    "english": "Color Spray",
+    "polish": "Kolorowy rozprysk"
+  },
+  {
+    "english": "Command",
+    "polish": "Rozkaz"
+  },
+  {
+    "english": "Commune",
+    "polish": "Kontakt z bóstwem"
+  },
+  {
+    "english": "Commune with Nature",
+    "polish": "Kontakt z naturą"
+  },
+  {
+    "english": "Comprehend Languages",
+    "polish": "Rozumienie języków"
+  },
+  {
+    "english": "Compulsion",
+    "polish": "Przymus"
+  },
+  {
+    "english": "Cone of Cold",
+    "polish": "Stożek zimna"
+  },
+  {
+    "english": "Confusion",
+    "polish": "Zamęt"
+  },
+  {
+    "english": "Conjure Animals",
+    "polish": "Przywołanie zwierząt"
+  },
+  {
+    "english": "Conjure Celestial",
+    "polish": "Przywołanie niebiańskiego"
+  },
+  {
+    "english": "Conjure Elemental",
+    "polish": "Przywołanie żywiołaka"
+  },
+  {
+    "english": "Conjure Fey",
+    "polish": "Przywołanie fey"
+  },
+  {
+    "english": "Conjure Minor Elementals",
+    "polish": "Przywołanie mniejszych żywiołaków"
+  },
+  {
+    "english": "Conjure Woodland Beings",
+    "polish": "Przywołanie leśnych istot"
+  },
+  {
+    "english": "Contact Other Plane",
+    "polish": "Kontakt z inną sferą"
+  },
+  {
+    "english": "Contagion",
+    "polish": "Zaraza"
+  },
+  {
+    "english": "Contingency",
+    "polish": "Przezorność"
+  },
+  {
+    "english": "Continual Flame",
+    "polish": "Wieczny ogień"
+  },
+  {
+    "english": "Control Water",
+    "polish": "Kontrola wody"
+  },
+  {
+    "english": "Control Weather",
+    "polish": "Kontrola pogody"
+  },
+  {
+    "english": "Counterspell",
+    "polish": "Przeciwzaklęcie"
+  },
+  {
+    "english": "Create Food and Water",
+    "polish": "Stworzenie jadła i wody"
+  },
+  {
+    "english": "Create or Destroy Water",
+    "polish": "Stworzenie lub zniszczenie wody"
+  },
+  {
+    "english": "Create Undead",
+    "polish": "Stworzenie nieumarłego"
+  },
+  {
+    "english": "Creation",
+    "polish": "Cieniste formowanie"
+  },
+  {
+    "english": "Cure Wounds",
+    "polish": "Leczenie ran"
+  },
+  {
+    "english": "Dancing Lights",
+    "polish": "Tańczące światła"
+  },
+  {
+    "english": "Darkness",
+    "polish": "Ciemność"
+  },
+  {
+    "english": "Darkvision",
+    "polish": "Widzenie w ciemności"
+  },
+  {
+    "english": "Daylight",
+    "polish": "Światło dnia"
+  },
+  {
+    "english": "Death Ward",
+    "polish": "Osłona przed śmiercią"
+  },
+  {
+    "english": "Delayed Blast Fireball",
+    "polish": "Opóźniona kula ognia"
+  },
+  {
+    "english": "Demiplane",
+    "polish": "Demisfera"
+  },
+  {
+    "english": "Detect Evil and Good",
+    "polish": "Wykrycie dobra i zła"
+  },
+  {
+    "english": "Detect Magic",
+    "polish": "Wykrycie magii"
+  },
+  {
+    "english": "Detect Poison and Disease",
+    "polish": "Wykrycie trucizny i choroby"
+  },
+  {
+    "english": "Detect Thoughts",
+    "polish": "Wykrycie myśli"
+  },
+  {
+    "english": "Dimension Door",
+    "polish": "Drzwi przez wymiary"
+  },
+  {
+    "english": "Disguise Self",
+    "polish": "Przebranie siebie"
+  },
+  {
+    "english": "Disintegrate",
+    "polish": "Dezintegracja"
+  },
+  {
+    "english": "Dispel Evil and Good",
+    "polish": "Rozproszenie dobra i zła"
+  },
+  {
+    "english": "Dispel Magic",
+    "polish": "Rozproszenie magii"
+  },
+  {
+    "english": "Dissonant Whispers",
+    "polish": "Fałszywe podszepty"
+  },
+  {
+    "english": "Divination",
+    "polish": "Wieszczenie"
+  },
+  {
+    "english": "Divine Favor",
+    "polish": "Boska łaska"
+  },
+  {
+    "english": "Divine Smite",
+    "polish": "Boskie ugodzenie"
+  },
+  {
+    "english": "Divine Word",
+    "polish": "Słowo boże"
+  },
+  {
+    "english": "Dominate Beast",
+    "polish": "Dominacja nad bestią"
+  },
+  {
+    "english": "Dominate Monster",
+    "polish": "Dominacja nad potworem"
+  },
+  {
+    "english": "Dominate Person",
+    "polish": "Dominacja nad osobą"
+  },
+  {
+    "english": "Dragon's Breath",
+    "polish": "Oddech smoka"
+  },
+  {
+    "english": "Dream",
+    "polish": "Sen"
+  },
+  {
+    "english": "Druidcraft",
+    "polish": "Druidzkie sztuczki"
+  },
+  {
+    "english": "Earthquake",
+    "polish": "Trzęsienie ziemi"
+  },
+  {
+    "english": "Eldritch Blast",
+    "polish": "Nieziemskie uderzenie"
+  },
+  {
+    "english": "Elementalism",
+    "polish": "Broń żywiołu"
+  },
+  {
+    "english": "Enhance Ability",
+    "polish": "Wzmocnienie cechy"
+  },
+  {
+    "english": "Enlarge/Reduce",
+    "polish": "Powiększenie/Pomniejszenie"
+  },
+  {
+    "english": "Ensnaring Strike",
+    "polish": "Pętające uderzenie"
+  },
+  {
+    "english": "Entangle",
+    "polish": "Oplątanie"
+  },
+  {
+    "english": "Enthrall",
+    "polish": "Fascynacja"
+  },
+  {
+    "english": "Etherealness",
+    "polish": "Eteryczność"
+  },
+  {
+    "english": "Expeditious Retreat",
+    "polish": "Błyskawiczny odwrót"
+  },
+  {
+    "english": "Eyebite",
+    "polish": "Kąśliwy wzrok"
+  },
+  {
+    "english": "Fabricate",
+    "polish": "Produkcja"
+  },
+  {
+    "english": "Faerie Fire",
+    "polish": "Blask faerie"
+  },
+  {
+    "english": "Faithful Hound",
+    "polish": "Wierny ogar"
+  },
+  {
+    "english": "False Life",
+    "polish": "Fałszywe życie"
+  },
+  {
+    "english": "Fear",
+    "polish": "Strach"
+  },
+  {
+    "english": "Feather Fall",
+    "polish": "Piórkospadanie"
+  },
+  {
+    "english": "Find Familiar",
+    "polish": "Znalezienie chowańca"
+  },
+  {
+    "english": "Find Steed",
+    "polish": "Znalezienie wierzchowca"
+  },
+  {
+    "english": "Find Traps",
+    "polish": "Wykrycie pułapek"
+  },
+  {
+    "english": "Finger of Death",
+    "polish": "Palec śmierci"
+  },
+  {
+    "english": "Fireball",
+    "polish": "Kula ognia"
+  },
+  {
+    "english": "Find the Path",
+    "polish": "Odnalezienie ścieżki"
+  },
+  {
+    "english": "Fire Bolt",
+    "polish": "Ognisty pocisk"
+  },
+  {
+    "english": "Fire Shield",
+    "polish": "Tarcza ognia"
+  },
+  {
+    "english": "Fire Storm",
+    "polish": "Burza ognia"
+  },
+  {
+    "english": "Flame Blade",
+    "polish": "Płomienne ostrze"
+  },
+  {
+    "english": "Flame Strike",
+    "polish": "Słup ognia"
+  },
+  {
+    "english": "Flaming Sphere",
+    "polish": "Płomienna kula"
+  },
+  {
+    "english": "Flesh to Stone",
+    "polish": "Ciało w kamień"
+  },
+  {
+    "english": "Floating Disk",
+    "polish": "Wędrujący dysk"
+  },
+  {
+    "english": "Fly",
+    "polish": "Lot"
+  },
+  {
+    "english": "Fog Cloud",
+    "polish": "Chmura mgły"
+  },
+  {
+    "english": "Forbiddance",
+    "polish": "Wyłączenie"
+  },
+  {
+    "english": "Forcecage",
+    "polish": "Cela mocy"
+  },
+  {
+    "english": "Foresight",
+    "polish": "Profetyzm"
+  },
+  {
+    "english": "Freedom of Movement",
+    "polish": "Swoboda ruchu"
+  },
+  {
+    "english": "Freezing Sphere",
+    "polish": "Mrożąca sfera"
+  },
+  {
+    "english": "Gaseous Form",
+    "polish": "Forma gazowa"
+  },
+  {
+    "english": "Gate",
+    "polish": "Brama"
+  },
+  {
+    "english": "Geas",
+    "polish": "Geas"
+  },
+  {
+    "english": "Gentle Repose",
+    "polish": "Bezpieczny spoczynek"
+  },
+  {
+    "english": "Giant Insect",
+    "polish": "Olbrzymie owady"
+  },
+  {
+    "english": "Glibness",
+    "polish": "Elokwencja"
+  },
+  {
+    "english": "Globe of Invulnerability",
+    "polish": "Sfera niepodatności"
+  },
+  {
+    "english": "Glyph of Warding",
+    "polish": "Glif strażniczy"
+  },
+  {
+    "english": "Goodberry",
+    "polish": "Dobre jagody"
+  },
+  {
+    "english": "Grease",
+    "polish": "Tłuszcz"
+  },
+  {
+    "english": "Greater Invisibility",
+    "polish": "Większa niewidzialność"
+  },
+  {
+    "english": "Greater Restoration",
+    "polish": "Większe przywrócenie"
+  },
+  {
+    "english": "Guardian of Faith",
+    "polish": "Strażnik wiary"
+  },
+  {
+    "english": "Guards and Wards",
+    "polish": "Ochronne glify"
+  },
+  {
+    "english": "Guidance",
+    "polish": "Wskazówki"
+  },
+  {
+    "english": "Guiding Bolt",
+    "polish": "Pocisk wiodący"
+  },
+  {
+    "english": "Gust of Wind",
+    "polish": "Poryw wiatru"
+  },
+  {
+    "english": "Hallow",
+    "polish": "Konsekracja"
+  },
+  {
+    "english": "Hallucinatory Terrain",
+    "polish": "Iluzoryczny teren"
+  },
+  {
+    "english": "Harm",
+    "polish": "Krzywda"
+  },
+  {
+    "english": "Haste",
+    "polish": "Przyspieszenie"
+  },
+  {
+    "english": "Heal",
+    "polish": "Uleczenie"
+  },
+  {
+    "english": "Healing Word",
+    "polish": "Kojące słowo"
+  },
+  {
+    "english": "Heat Metal",
+    "polish": "Rozgrzanie metalu"
+  },
+  {
+    "english": "Hellish Rebuke",
+    "polish": "Piekielna reprymenda"
+  },
+  {
+    "english": "Heroes' Feast",
+    "polish": "Uczta bohaterów"
+  },
+  {
+    "english": "Heroism",
+    "polish": "Heroizm"
+  },
+  {
+    "english": "Hex",
+    "polish": "Urok"
+  },
+  {
+    "english": "Hideous Laughter",
+    "polish": "Ohydny śmiech"
+  },
+  {
+    "english": "Hold Monster",
+    "polish": "Unieruchomienie potwora"
+  },
+  {
+    "english": "Hold Person",
+    "polish": "Unieruchomienie osoby"
+  },
+  {
+    "english": "Holy Aura",
+    "polish": "Święta aura"
+  },
+  {
+    "english": "Hunter's Mark",
+    "polish": "Znak łowcy"
+  },
+  {
+    "english": "Hypnotic Pattern",
+    "polish": "Hipnotyczny wzór"
+  },
+  {
+    "english": "Ice Knife",
+    "polish": "Lodowy nóż"
+  },
+  {
+    "english": "Ice Storm",
+    "polish": "Burza lodu"
+  },
+  {
+    "english": "Identify",
+    "polish": "Identyfikacja"
+  },
+  {
+    "english": "Illusory Script",
+    "polish": "Iluzoryczny manuskrypt"
+  },
+  {
+    "english": "Imprisonment",
+    "polish": "Uwięzienie"
+  },
+  {
+    "english": "Incendiary Cloud",
+    "polish": "Chmura żaru"
+  },
+  {
+    "english": "Inflict Wounds",
+    "polish": "Zadawanie ran"
+  },
+  {
+    "english": "Insect Plague",
+    "polish": "Plaga owadów"
+  },
+  {
+    "english": "Instant Summons",
+    "polish": "Błyskawiczne przywołanie"
+  },
+  {
+    "english": "Irresistible Dance",
+    "polish": "Nieodparty taniec"
+  },
+  {
+    "english": "Invisibility",
+    "polish": "Niewidzialność"
+  },
+  {
+    "english": "Jump",
+    "polish": "Skok"
+  },
+  {
+    "english": "Knock",
+    "polish": "Kołatka"
+  },
+  {
+    "english": "Legend Lore",
+    "polish": "Legendarna wiedza"
+  },
+  {
+    "english": "Lesser Restoration",
+    "polish": "Mniejsze przywrócenie"
+  },
+  {
+    "english": "Levitate",
+    "polish": "Lewitacja"
+  },
+  {
+    "english": "Light",
+    "polish": "Światło"
+  },
+  {
+    "english": "Lightning Bolt",
+    "polish": "Piorun"
+  },
+  {
+    "english": "Locate Animals or Plants",
+    "polish": "Odnalezienie zwierząt lub roślin"
+  },
+  {
+    "english": "Locate Creature",
+    "polish": "Odnalezienie istoty"
+  },
+  {
+    "english": "Locate Object",
+    "polish": "Odnalezienie obiektu"
+  },
+  {
+    "english": "Longstrider",
+    "polish": "Szybkonogi"
+  },
+  {
+    "english": "Mage Armor",
+    "polish": "Zbroja maga"
+  },
+  {
+    "english": "Mage Hand",
+    "polish": "Magiczna dłoń"
+  },
+  {
+    "english": "Magic Circle",
+    "polish": "Krąg magii"
+  },
+  {
+    "english": "Magic Jar",
+    "polish": "Magiczny słój"
+  },
+  {
+    "english": "Magic Missile",
+    "polish": "Magiczny pocisk"
+  },
+  {
+    "english": "Magic Mouth",
+    "polish": "Magiczne usta"
+  },
+  {
+    "english": "Magic Weapon",
+    "polish": "Magiczna broń"
+  },
+  {
+    "english": "Magnificent Mansion",
+    "polish": "Wspaniała posiadłość"
+  },
+  {
+    "english": "Major Image",
+    "polish": "Większy obraz"
+  },
+  {
+    "english": "Mass Cure Wounds",
+    "polish": "Masowe leczenie ran"
+  },
+  {
+    "english": "Mass Heal",
+    "polish": "Masowe uleczenie"
+  },
+  {
+    "english": "Mass Healing Word",
+    "polish": "Masowe kojące słowo"
+  },
+  {
+    "english": "Mass Suggestion",
+    "polish": "Masowa sugestia"
+  },
+  {
+    "english": "Maze",
+    "polish": "Labirynt"
+  },
+  {
+    "english": "Meld into Stone",
+    "polish": "Wtopienie w kamień"
+  },
+  {
+    "english": "Mending",
+    "polish": "Naprawa"
+  },
+  {
+    "english": "Message",
+    "polish": "Wiadomość"
+  },
+  {
+    "english": "Meteor Swarm",
+    "polish": "Rój meteorytów"
+  },
+  {
+    "english": "Mind Blank",
+    "polish": "Czysty umysł"
+  },
+  {
+    "english": "Mind Spike",
+    "polish": "Kolec umysłu"
+  },
+  {
+    "english": "Minor Illusion",
+    "polish": "Pomniejsza iluzja"
+  },
+  {
+    "english": "Mirage Arcane",
+    "polish": "Miraż"
+  },
+  {
+    "english": "Mirror Image",
+    "polish": "Lustrzane odbicia"
+  },
+  {
+    "english": "Mislead",
+    "polish": "Zmyłka"
+  },
+  {
+    "english": "Misty Step",
+    "polish": "Krok przez mgłę"
+  },
+  {
+    "english": "Modify Memory",
+    "polish": "Podmiana wspomnień"
+  },
+  {
+    "english": "Moonbeam",
+    "polish": "Księżycowy promień"
+  },
+  {
+    "english": "Move Earth",
+    "polish": "Poruszenie ziemi"
+  },
+  {
+    "english": "Nondetection",
+    "polish": "Niewykrywalność"
+  },
+  {
+    "english": "Passwall",
+    "polish": "Przejście w murze"
+  },
+  {
+    "english": "Pass without Trace",
+    "polish": "Przejście bez śladu"
+  },
+  {
+    "english": "Phantasmal Force",
+    "polish": "Urojona siła"
+  },
+  {
+    "english": "Phantasmal Killer",
+    "polish": "Urojony zabójca"
+  },
+  {
+    "english": "Phantom Steed",
+    "polish": "Widmowy wierzchowiec"
+  },
+  {
+    "english": "Planar Ally",
+    "polish": "Sferalny sojusznik"
+  },
+  {
+    "english": "Planar Binding",
+    "polish": "Sferalne wiązanie"
+  },
+  {
+    "english": "Plane Shift",
+    "polish": "Sferalny przeskok"
+  },
+  {
+    "english": "Plant Growth",
+    "polish": "Rozrost roślin"
+  },
+  {
+    "english": "Poison Spray",
+    "polish": "Trujący rozprysk"
+  },
+  {
+    "english": "Polymorph",
+    "polish": "Polimorfia"
+  },
+  {
+    "english": "Power Word Heal",
+    "polish": "Słowo mocy Ulecz"
+  },
+  {
+    "english": "Power Word Kill",
+    "polish": "Słowo mocy Giń"
+  },
+  {
+    "english": "Power Word Stun",
+    "polish": "Słowo mocy Stój"
+  },
+  {
+    "english": "Prayer of Healing",
+    "polish": "Uzdrawiająca modlitwa"
+  },
+  {
+    "english": "Prestidigitation",
+    "polish": "Kuglarstwo"
+  },
+  {
+    "english": "Prismatic Spray",
+    "polish": "Pryzmatyczny rozprysk"
+  },
+  {
+    "english": "Prismatic Wall",
+    "polish": "Pryzmatyczny mur"
+  },
+  {
+    "english": "Private Sanctum",
+    "polish": "Osobiste sanktuarium"
+  },
+  {
+    "english": "Produce Flame",
+    "polish": "Wywołanie płomienia"
+  },
+  {
+    "english": "Programmed Illusion",
+    "polish": "Zaplanowana iluzja"
+  },
+  {
+    "english": "Project Image",
+    "polish": "Projekcja obrazu"
+  },
+  {
+    "english": "Protection from Energy",
+    "polish": "Ochrona przed energią"
+  },
+  {
+    "english": "Protection from Evil and Good",
+    "polish": "Ochrona przed dobrem i złem"
+  },
+  {
+    "english": "Protection from Poison",
+    "polish": "Ochrona przed trucizną"
+  },
+  {
+    "english": "Purify Food and Drink",
+    "polish": "Oczyszczenie jadła i napoju"
+  },
+  {
+    "english": "Raise Dead",
+    "polish": "Wskrzeszenie"
+  },
+  {
+    "english": "Ray of Enfeeblement",
+    "polish": "Promień osłabienia"
+  },
+  {
+    "english": "Ray of Frost",
+    "polish": "Promień mrozu"
+  },
+  {
+    "english": "Regenerate",
+    "polish": "Regeneracja"
+  },
+  {
+    "english": "Ray of Sickness",
+    "polish": "Promień zatrucia"
+  },
+  {
+    "english": "Reincarnate",
+    "polish": "Reinkarnacja"
+  },
+  {
+    "english": "Remove Curse",
+    "polish": "Zdjęcie klątwy"
+  },
+  {
+    "english": "Resilient Sphere",
+    "polish": "Sprężysta sfera"
+  },
+  {
+    "english": "Resistance",
+    "polish": "Odporność"
+  },
+  {
+    "english": "Resurrection",
+    "polish": "Zmartwychwstanie"
+  },
+  {
+    "english": "Reverse Gravity",
+    "polish": "Odwrócenie grawitacji"
+  },
+  {
+    "english": "Revivify",
+    "polish": "Ożywienie"
+  },
+  {
+    "english": "Rope Trick",
+    "polish": "Sztuczka z liną"
+  },
+  {
+    "english": "Sacred Flame",
+    "polish": "Święty płomień"
+  },
+  {
+    "english": "Sanctuary",
+    "polish": "Sanktuarium"
+  },
+  {
+    "english": "Scorching Ray",
+    "polish": "Wypalający promień"
+  },
+  {
+    "english": "Scrying",
+    "polish": "Wizja"
+  },
+  {
+    "english": "Searing Smite",
+    "polish": "Palące ugodzenie"
+  },
+  {
+    "english": "Secret Chest",
+    "polish": "Sekretny kufer"
+  },
+  {
+    "english": "See Invisibility",
+    "polish": "Widzenie niewidzialnego"
+  },
+  {
+    "english": "Seeming",
+    "polish": "Pozory"
+  },
+  {
+    "english": "Sending",
+    "polish": "Nadanie wiadomości"
+  },
+  {
+    "english": "Sequester",
+    "polish": "Odosobnienie"
+  },
+  {
+    "english": "Shapechange",
+    "polish": "Zmiennokształtność"
+  },
+  {
+    "english": "Shatter",
+    "polish": "Trzask"
+  },
+  {
+    "english": "Shield",
+    "polish": "Tarcza"
+  },
+  {
+    "english": "Shield of Faith",
+    "polish": "Tarcza wiary"
+  },
+  {
+    "english": "Shillelagh",
+    "polish": "Shillelagh"
+  },
+  {
+    "english": "Shining Smite",
+    "polish": "Świecące ugodzenie"
+  },
+  {
+    "english": "Shocking Grasp",
+    "polish": "Porażający uścisk"
+  },
+  {
+    "english": "Silence",
+    "polish": "Cisza"
+  },
+  {
+    "english": "Silent Image",
+    "polish": "Milczący obraz"
+  },
+  {
+    "english": "Simulacrum",
+    "polish": "Symulakrum"
+  },
+  {
+    "english": "Sleep",
+    "polish": "Uśpienie"
+  },
+  {
+    "english": "Sleet Storm",
+    "polish": "Śnieżyca"
+  },
+  {
+    "english": "Slow",
+    "polish": "Spowolnienie"
+  },
+  {
+    "english": "Sorcerous Burst",
+    "polish": "Czarnoksiężny wybuch"
+  },
+  {
+    "english": "Spare the Dying",
+    "polish": "Powstrzymanie śmierci"
+  },
+  {
+    "english": "Speak with Animals",
+    "polish": "Rozmawianie ze zwierzętami"
+  },
+  {
+    "english": "Speak with Dead",
+    "polish": "Rozmawianie z umarłymi"
+  },
+  {
+    "english": "Speak with Plants",
+    "polish": "Rozmawianie z roślinami"
+  },
+  {
+    "english": "Spider Climb",
+    "polish": "Pajęcza wspinaczka"
+  },
+  {
+    "english": "Spike Growth",
+    "polish": "Wzrost kolców"
+  },
+  {
+    "english": "Spirit Guardians",
+    "polish": "Duchowi strażnicy"
+  },
+  {
+    "english": "Spiritual Weapon",
+    "polish": "Duchowa broń"
+  },
+  {
+    "english": "Starry Wisp",
+    "polish": "Gwiezdny duszek"
+  },
+  {
+    "english": "Stinking Cloud",
+    "polish": "Śmierdząca chmura"
+  },
+  {
+    "english": "Stone Shape",
+    "polish": "Kamienny kształt"
+  },
+  {
+    "english": "Stoneskin",
+    "polish": "Kamienna skóra"
+  },
+  {
+    "english": "Storm of Vengeance",
+    "polish": "Burza zemsty"
+  },
+  {
+    "english": "Suggestion",
+    "polish": "Sugestia"
+  },
+  {
+    "english": "Summon Dragon",
+    "polish": "Przywołanie smoka"
+  },
+  {
+    "english": "Sunbeam",
+    "polish": "Promień słońca"
+  },
+  {
+    "english": "Sunburst",
+    "polish": "Słoneczny blask"
+  },
+  {
+    "english": "Symbol",
+    "polish": "Symbol"
+  },
+  {
+    "english": "Telekinesis",
+    "polish": "Telekineza"
+  },
+  {
+    "english": "Telepathic Bond",
+    "polish": "Telepatyczna więź"
+  },
+  {
+    "english": "Teleport",
+    "polish": "Teleportacja"
+  },
+  {
+    "english": "Teleportation Circle",
+    "polish": "Krąg teleportacyjny"
+  },
+  {
+    "english": "Thaumaturgy",
+    "polish": "Taumaturgia"
+  },
+  {
+    "english": "Thunderwave",
+    "polish": "Fala gromu"
+  },
+  {
+    "english": "Time Stop",
+    "polish": "Zatrzymanie czasu"
+  },
+  {
+    "english": "Tiny Hut",
+    "polish": "Chatka"
+  },
+  {
+    "english": "Tongues",
+    "polish": "Języki"
+  },
+  {
+    "english": "Transport via Plants",
+    "polish": "Podróż przez rośliny"
+  },
+  {
+    "english": "Tree Stride",
+    "polish": "Spacer między drzewami"
+  },
+  {
+    "english": "True Polymorph",
+    "polish": "Prawdziwa polimorfia"
+  },
+  {
+    "english": "True Resurrection",
+    "polish": "Prawdziwe zmartwychwstanie"
+  },
+  {
+    "english": "True Seeing",
+    "polish": "Prawdziwe widzenie"
+  },
+  {
+    "english": "True Strike",
+    "polish": "Prawdziwe uderzenie"
+  },
+  {
+    "english": "Tsunami",
+    "polish": "Tsunami"
+  },
+  {
+    "english": "Unseen Servant",
+    "polish": "Niewidoczny sługa"
+  },
+  {
+    "english": "Vampiric Touch",
+    "polish": "Wampiryczny dotyk"
+  },
+  {
+    "english": "Vicious Mockery",
+    "polish": "Zjadliwe szyderstwo"
+  },
+  {
+    "english": "Vitriolic Sphere",
+    "polish": "Kula witriolowa"
+  },
+  {
+    "english": "Wall of Fire",
+    "polish": "Ściana ognia"
+  },
+  {
+    "english": "Wall of Force",
+    "polish": "Ściana energii"
+  },
+  {
+    "english": "Wall of Ice",
+    "polish": "Ściana lodu"
+  },
+  {
+    "english": "Wall of Stone",
+    "polish": "Ściana kamienia"
+  },
+  {
+    "english": "Wall of Thorns",
+    "polish": "Ściana cierni"
+  },
+  {
+    "english": "Warding Bond",
+    "polish": "Ochronna więź"
+  },
+  {
+    "english": "Water Breathing",
+    "polish": "Oddychanie pod wodą"
+  },
+  {
+    "english": "Water Walk",
+    "polish": "Spacer po wodzie"
+  },
+  {
+    "english": "Web",
+    "polish": "Pajęczyna"
+  },
+  {
+    "english": "Weird",
+    "polish": "Dziwo"
+  },
+  {
+    "english": "Wind Walk",
+    "polish": "Spacer na wietrze"
+  },
+  {
+    "english": "Wind Wall",
+    "polish": "Ściana wichru"
+  },
+  {
+    "english": "Wish",
+    "polish": "Życzenie"
+  },
+  {
+    "english": "Word of Recall",
+    "polish": "Słowo powrotu"
+  },
+  {
+    "english": "Zone of Truth",
+    "polish": "Strefa prawdy"
+  }
+]
